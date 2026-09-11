@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;500&display=swap">
+  <style>
+    body { margin: 0; background: #fbfaf7; }
+    a { color: #b14e49; text-decoration: none; border-bottom: 1px solid rgba(177,78,73,0.3); }
+    a:hover { color: #7e302d; border-bottom-color: rgba(126,48,45,0.6); }
+    input[type=range] { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; height: 22px; }
+    input[type=range]::-webkit-slider-runnable-track { height: 1px; background: #d6d2cd; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; margin-top: -7px; border-radius: 50%; background: #fbfaf7; border: 1.5px solid #b14e49; cursor: pointer; }
+    input[type=range]::-moz-range-track { height: 1px; background: #d6d2cd; }
+    input[type=range]::-moz-range-thumb { width: 13px; height: 13px; border-radius: 50%; background: #fbfaf7; border: 1.5px solid #b14e49; cursor: pointer; }
+    .disc summary { list-style: none; cursor: pointer; }
+    .disc summary::-webkit-details-marker { display: none; }
+  </style>
+</helmet>
+
+<div style="width: 1200px; background: #fbfaf7; font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; color: #241e1a; -webkit-font-smoothing: antialiased;">
+
+  <!-- top bar -->
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 22px 80px; border-bottom: 1px solid #e2dfdb;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#79736f" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.12em; color: #79736f;">ALL PROBLEMS</span>
+    </div>
+    <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.16em; font-weight: 500;">MILLEVIZ</div>
+  </div>
+
+  <!-- hero -->
+  <div style="max-width: 620px; margin: 0 auto; padding: 108px 0 0 0;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; color: #79736f; margin-bottom: 34px;">
+      <span style="color: {{accent}};">02 · THE RIEMANN HYPOTHESIS</span>
+      <span>AN INTERACTIVE ESSAY</span>
+    </div>
+    <h1 style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-weight: 400; font-size: 64px; line-height: 1.02; letter-spacing: -0.018em; margin: 0; text-wrap: balance;">Where do the primes keep <em style="font-style: italic; color: {{accent}};">their rhythm?</em></h1>
+    <p style="font-size: 20px; line-height: 1.6; color: #241e1a; margin: 36px 0 0 0;">Count the primes up to a million and you get 78,498. Nobody can tell you why that number and not another. Something decides it, and the guess is that the decision is made somewhere else entirely.</p>
+    <p style="font-size: 17px; line-height: 1.72; color: #4c4742; margin: 26px 0 0 0;">Primes are the numbers with no factors but themselves and one. They arrive without warning: 2, 3, 5, 7, 11, then a gap, then two at once. Yet from far enough away the scatter has a shape, and the shape is startlingly regular. The Riemann Hypothesis is a claim about how regular.</p>
+    <div style="margin: 40px 0 0 0; border-left: 2px solid {{accent}}; padding: 4px 0 4px 22px;">
+      <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.13em; color: {{accent}}; margin-bottom: 10px;">THE CLAIM</div>
+      <div style="font-size: 16.5px; line-height: 1.65; color: #241e1a;">Every nontrivial zero of the Riemann zeta function has real part exactly one half. Stated in 1859. Checked for the first ten trillion zeros. Proved for none of them.</div>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <div style="max-width: 620px; margin: 0 auto; padding: 104px 0 0 0;">
+    <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.13em; color: #a7a4a0; margin-bottom: 18px;">01 &nbsp;|&nbsp; <span style="color: #79736f;">THE COUNT</span></div>
+    <h2 style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-weight: 400; font-size: 38px; line-height: 1.12; letter-spacing: -0.012em; margin: 0;">Primes thin out, on schedule.</h2>
+    <p style="font-size: 17px; line-height: 1.72; color: #4c4742; margin: 22px 0 0 0;">Write down how many primes there are below each number and you get a staircase. It never stops climbing, but the steps get further apart. Gauss noticed as a teenager that the height of the staircase is close to a smooth curve, and that curve involves nothing but a logarithm.</p>
+  </div>
+
+  <div style="padding: 46px 80px 0 80px;">
+    <div style="border-top: 1px solid #e2dfdb; padding-top: 18px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.11em; color: #79736f; margin-bottom: 16px;">
+        <span>PRIMES BELOW x, COUNTED AND ESTIMATED</span>
+        <span style="color: #a7a4a0;">FIG. 01</span>
+      </div>
+      <svg viewBox="0 0 1040 340" width="1040" height="340" fill="none">
+        <g stroke="#efece9" stroke-width="1">
+          <path d="M56,290 H1020"/><path d="M56,224 H1020"/><path d="M56,158 H1020"/><path d="M56,92 H1020"/><path d="M56,26 H1020"/>
+        </g>
+        <g font-family="'IBM Plex Mono', monospace" font-size="10" fill="#a7a4a0">
+          <text x="40" y="294" text-anchor="end">0</text><text x="40" y="228" text-anchor="end">8</text><text x="40" y="162" text-anchor="end">16</text><text x="40" y="96" text-anchor="end">24</text>
+          <text x="56" y="318">0</text><text x="298" y="318" text-anchor="middle">25</text><text x="538" y="318" text-anchor="middle">50</text><text x="779" y="318" text-anchor="middle">75</text><text x="1020" y="318" text-anchor="end">100</text>
+        </g>
+        <path d="{{fig.xlogPath}}" stroke="#a7a4a0" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <path d="{{fig.liPath}}" stroke="#79736f" stroke-width="1.4"/>
+        <path d="{{fig.piPath}}" stroke="{{accent}}" stroke-width="2" stroke-linejoin="round"/>
+        <g font-family="'IBM Plex Mono', monospace" font-size="11">
+          <text x="1012" y="{{fig.labPi}}" text-anchor="end" fill="{{accent}}">π(x) = 25</text>
+          <text x="1012" y="{{fig.labLi}}" text-anchor="end" fill="#79736f">Li(x) ≈ 29.1</text>
+          <text x="1012" y="{{fig.labXlog}}" text-anchor="end" fill="#a7a4a0">x / ln x ≈ 21.7</text>
+        </g>
+      </svg>
+      <div style="font-size: 13.5px; line-height: 1.6; color: #79736f; margin-top: 14px; max-width: 620px;">The staircase is the true count. The dashed line is Gauss's first guess, x divided by its logarithm. The solid gray line is the better one, the logarithmic integral, and it hugs the staircase closely enough that the difference is the whole subject.</div>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div style="max-width: 620px; margin: 0 auto; padding: 96px 0 0 0;">
+    <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.13em; color: #a7a4a0; margin-bottom: 18px;">02 &nbsp;|&nbsp; <span style="color: #79736f;">THE ERROR</span></div>
+    <h2 style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-weight: 400; font-size: 38px; line-height: 1.12; letter-spacing: -0.012em; margin: 0;">The good guess is always a little wrong.</h2>
+    <p style="font-size: 17px; line-height: 1.72; color: #4c4742; margin: 22px 0 0 0;">Subtract the staircase from the smooth curve and you are left with the error. It wanders. The question is not whether it is zero; it is how far it can stray. Riemann's claim, translated out of its own language, sets a ceiling: the error never grows faster than the square root of x, give or take a logarithm.</p>
+  </div>
+
+  <div style="padding: 46px 80px 0 80px;">
+    <div style="border-top: 1px solid #e2dfdb; padding-top: 18px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.11em; color: #79736f; margin-bottom: 16px;">
+        <span>Li(x) − π(x), AGAINST A √x ENVELOPE</span>
+        <span style="color: #a7a4a0;">FIG. 02</span>
+      </div>
+      <svg viewBox="0 0 1040 280" width="1040" height="280" fill="none">
+        <path d="{{fig.envPath}}" fill="{{accent}}" fill-opacity="0.07"/>
+        <path d="{{fig.envUpper}}" stroke="{{accent}}" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+        <path d="{{fig.envLower}}" stroke="{{accent}}" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+        <path d="M56,140 H1020" stroke="#d6d2cd" stroke-width="1"/>
+        <path d="{{fig.errPath}}" stroke="#241e1a" stroke-width="1.6" stroke-linejoin="round"/>
+        <g font-family="'IBM Plex Mono', monospace" font-size="10" fill="#a7a4a0">
+          <text x="40" y="144" text-anchor="end">0</text><text x="40" y="60" text-anchor="end">+100</text><text x="40" y="228" text-anchor="end">−100</text>
+          <text x="56" y="262">0</text><text x="1020" y="262" text-anchor="end">10,000</text>
+        </g>
+        <text x="1012" y="52" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="11" fill="{{accent}}">± √x</text>
+      </svg>
+      <div style="font-size: 13.5px; line-height: 1.6; color: #79736f; margin-top: 14px; max-width: 620px;">The envelope opens as √x. The error crawls along the floor of it and, over this whole range, never once dips below zero: Li(x) always overshoots. The first time it undershoots is somewhere past 10 to the power 316, a number nobody will ever reach by counting. The error has to stay inside the envelope forever, at every scale, for the hypothesis to hold. No computation can settle that; only a proof can.</div>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div style="max-width: 620px; margin: 0 auto; padding: 96px 0 0 0;">
+    <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.13em; color: #a7a4a0; margin-bottom: 18px;">03 &nbsp;|&nbsp; <span style="color: #79736f;">THE ZEROS</span></div>
+    <h2 style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-weight: 400; font-size: 38px; line-height: 1.12; letter-spacing: -0.012em; margin: 0;">Everything sits on one line.</h2>
+    <p style="font-size: 17px; line-height: 1.72; color: #4c4742; margin: 22px 0 0 0;">Riemann moved the question somewhere unexpected. He built a function of a complex number, the zeta function, and showed that the error in the prime count is controlled entirely by the places where that function equals zero. Those places live in a vertical strip. Every one found so far sits dead center, on the line where the real part is one half.</p>
+  </div>
+
+  <div style="padding: 46px 80px 0 80px;">
+    <div style="border-top: 1px solid #e2dfdb; padding-top: 18px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.11em; color: #79736f; margin-bottom: 16px;">
+        <span>THE FIRST 50 NONTRIVIAL ZEROS IN THE CRITICAL STRIP</span>
+        <span style="color: #a7a4a0;">FIG. 03</span>
+      </div>
+      <svg viewBox="0 0 1040 210" width="1040" height="210" fill="none">
+        <rect x="56" y="34" width="964" height="120" fill="{{accent}}" fill-opacity="0.055"/>
+        <path d="M56,34 H1020 M56,154 H1020" stroke="#d6d2cd" stroke-width="1"/>
+        <path d="M56,94 H1020" stroke="{{accent}}" stroke-width="1.2"/>
+        <sc-for list="{{fig.zeros}}" as="z" hint-placeholder-count="6">
+          <circle cx="{{z.cx}}" cy="94" r="3.6" fill="{{accent}}"/>
+          <path d="M{{z.cx}},154 V162" stroke="#a7a4a0" stroke-width="1"/>
+        </sc-for>
+        <g font-family="'IBM Plex Mono', monospace" font-size="10" fill="#a7a4a0">
+          <text x="44" y="38" text-anchor="end">Re = 1</text><text x="44" y="158" text-anchor="end">Re = 0</text>
+          <text x="56" y="196">t = 0</text><text x="1020" y="196" text-anchor="end">t = 146</text>
+        </g>
+        <text x="44" y="98" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="10" fill="{{accent}}">Re = ½</text>
+      </svg>
+      <div style="font-size: 13.5px; line-height: 1.6; color: #79736f; margin-top: 14px; max-width: 620px;">The first zero sits at t = 14.13. The tick marks below record where the rest fall. More than ten trillion have been computed and not one has left the line. The hypothesis says none ever will.</div>
+    </div>
+  </div>
+
+  <!-- 04 -->
+  <div style="max-width: 620px; margin: 0 auto; padding: 96px 0 0 0;">
+    <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.13em; color: #a7a4a0; margin-bottom: 18px;">04 &nbsp;|&nbsp; <span style="color: #79736f;">THE MUSIC</span></div>
+    <h2 style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-weight: 400; font-size: 38px; line-height: 1.12; letter-spacing: -0.012em; margin: 0;">Each zero is a wave. Add enough and the primes appear.</h2>
+    <p style="font-size: 17px; line-height: 1.72; color: #4c4742; margin: 22px 0 0 0;">This is the part that is hard to believe the first time. Every zero contributes one wave, and the sum of those waves reproduces the staircase of the primes exactly. Start with a straight line. Add the first zero and a ripple appears. Add fifty and the steps sharpen into place. The primes are not hiding a pattern; they are the pattern, heard from the other side.</p>
+  </div>
+
+  <div style="padding: 46px 80px 0 80px;">
+    <div style="border-top: 1px solid #e2dfdb; padding-top: 18px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.11em; color: #79736f; margin-bottom: 16px;">
+        <span>THE PRIME STAIRCASE ψ(x), REBUILT FROM ZEROS</span>
+        <span style="color: #a7a4a0;">FIG. 04 · INTERACTIVE</span>
+      </div>
+      <svg viewBox="0 0 1040 330" width="1040" height="330" fill="none">
+        <g stroke="#efece9" stroke-width="1">
+          <path d="M56,280 H1020"/><path d="M56,214 H1020"/><path d="M56,148 H1020"/><path d="M56,82 H1020"/><path d="M56,16 H1020"/>
+        </g>
+        <g font-family="'IBM Plex Mono', monospace" font-size="10" fill="#a7a4a0">
+          <text x="40" y="284" text-anchor="end">0</text><text x="40" y="218" text-anchor="end">8</text><text x="40" y="152" text-anchor="end">16</text><text x="40" y="86" text-anchor="end">24</text>
+          <text x="56" y="308">x = 2</text><text x="1020" y="308" text-anchor="end">x = 30</text>
+        </g>
+        <path d="{{fig.psiTrue}}" stroke="#b8b2ab" stroke-width="2" stroke-linejoin="round"/>
+        <path d="{{fig.psiApprox}}" stroke="{{accent}}" stroke-width="1.7" stroke-linejoin="round"/>
+      </svg>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 56px; align-items: center; margin-top: 22px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.11em; color: #79736f; margin-bottom: 6px;">
+            <span>ZEROS INCLUDED</span>
+            <span>50</span>
+          </div>
+          <input type="range" min="0" max="50" step="1" value="{{fig.count}}" onInput="{{fig.onCount}}">
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-size: 46px; line-height: 1; color: {{accent}};">{{fig.count}}</div>
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.11em; color: #79736f; margin-top: 8px;">WAVES IN THE SUM</div>
+        </div>
+      </div>
+      <div style="font-size: 13.5px; line-height: 1.6; color: #79736f; margin-top: 22px; max-width: 620px;">Gray is the true staircase, which jumps by log p at every prime and every prime power. Colored is the explicit formula with the chosen number of zeros. This is Chebyshev's ψ(x) rather than the prime count itself, because its formula is the clean one.</div>
+    </div>
+  </div>
+
+  <!-- 05 -->
+  <div style="max-width: 620px; margin: 0 auto; padding: 96px 0 0 0;">
+    <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.13em; color: #a7a4a0; margin-bottom: 18px;">05 &nbsp;|&nbsp; <span style="color: #79736f;">WHAT HANGS ON IT</span></div>
+    <h2 style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-weight: 400; font-size: 38px; line-height: 1.12; letter-spacing: -0.012em; margin: 0;">Thousands of theorems begin with the word if.</h2>
+    <p style="font-size: 17px; line-height: 1.72; color: #4c4742; margin: 22px 0 0 0;">Number theory is full of results whose first line assumes the Riemann Hypothesis. If a zero were ever found off the line, the waves would fall out of step and the primes would clump in a way nothing currently predicts. Much of what is believed about factorization, and so about the cryptography built on it, would need rewriting. Nobody expects that. Everybody would like to know.</p>
+    <p style="font-size: 17px; line-height: 1.72; color: #4c4742; margin: 20px 0 0 0;">It has stood since 1859. Hilbert put it on his list in 1900. Clay put a million dollars on it in 2000. It remains, by most accounts, the most important open question in mathematics.</p>
+  </div>
+
+  <!-- disclosures -->
+  <div style="max-width: 620px; margin: 0 auto; padding: 84px 0 0 0;">
+    <div class="disc" style="border-top: 1px solid #e2dfdb; padding: 22px 0;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 16px; color: #241e1a;">Read the equation</span>
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 15px; color: #a7a4a0;">+</span>
+      </div>
+      <div style="margin-top: 22px;">
+        <div style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-size: 25px; color: #241e1a; letter-spacing: 0.01em;">ζ(s) &nbsp;=&nbsp; <span style="font-size: 30px; vertical-align: -4px;">Σ</span><span style="font-size: 14px;"> n≥1</span> &nbsp;1 / n<sup style="font-size: 15px;">s</sup> &nbsp;=&nbsp; <span style="font-size: 30px; vertical-align: -4px;">Π</span><span style="font-size: 14px;"> p prime</span> &nbsp;(1 − p<sup style="font-size: 15px;">−s</sup>)<sup style="font-size: 15px;">−1</sup></div>
+        <div style="font-size: 14.5px; line-height: 1.7; color: #79736f; margin-top: 18px;">The sum on the left runs over every whole number; the product on the right runs over every prime. Euler proved they are the same thing, and that single identity is the bridge the whole subject crosses. The sum converges only when the real part of s exceeds one, so ζ is extended to the rest of the plane by analytic continuation. The zeros at s = −2, −4, −6 and so on are called trivial and are not at issue. Every other zero is.</div>
+      </div>
+    </div>
+    <div class="disc" style="border-top: 1px solid #e2dfdb; border-bottom: 1px solid #e2dfdb; padding: 22px 0;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 16px; color: #241e1a;">Behind the visuals</span>
+        <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 15px; color: #a7a4a0;">+</span>
+      </div>
+      <div style="font-size: 14.5px; line-height: 1.7; color: #79736f; margin-top: 18px;">Figures 01 and 02 count primes by sieve and integrate Li(x) numerically from 2. Figure 03 plots the imaginary parts of the first fifty zeros at their published values, starting at 14.134725 and ending at 143.111846. Figure 04 evaluates the explicit formula ψ(x) = x − Σ x<sup>ρ</sup>/ρ − ln 2π − ½ln(1 − x<sup>−2</sup>), pairing each zero with its conjugate so the sum stays real. The staircase behind it jumps by ln p at every prime power, and the formula converges to the midpoint of each riser rather than to its top, which is why the curve threads through the steps instead of tracing them.</div>
+    </div>
+  </div>
+
+  <!-- next -->
+  <div style="padding: 76px 80px 0 80px;">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px;">
+      <div style="border-top: 2px solid #4c6ebd; padding-top: 18px;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #79736f;">← 01 PREVIOUS</div>
+        <div style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-size: 28px; margin-top: 10px;">P versus NP</div>
+      </div>
+      <div style="border-top: 2px solid #007bb2; padding-top: 18px; text-align: right;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #79736f;">03 NEXT →</div>
+        <div style="font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; font-size: 28px; margin-top: 10px;">Navier–Stokes Smoothness</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="margin-top: 84px; border-top: 1px solid #e2dfdb; padding: 30px 80px 48px 80px; display: flex; justify-content: space-between; align-items: baseline;">
+    <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.1em; color: #a7a4a0;">MILLEVIZ · 02 OF 07</div>
+    <div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.1em; color: #a7a4a0;">OFFICIAL STATEMENT AT CLAYMATH.ORG</div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"zeroCount":{"editor":"range","default":20,"min":0,"max":50,"step":1,"section":"Figure 04"},"accent":{"editor":"color","default":"#b14e49","options":["#b14e49","#4c6ebd","#007bb2","#38853e"]},"$preview":{"width":1200,"height":4600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { count: null };
+  }
+
+  sieve(n) {
+    const c = new Uint8Array(n + 1), ps = [];
+    for (let i = 2; i <= n; i++) {
+      if (!c[i]) { ps.push(i); for (let j = i * i; j <= n; j += i) c[j] = 1; }
+    }
+    return ps;
+  }
+
+  li(x) { // integral of 1/ln t from 2 to x, trapezoid
+    if (x <= 2) return 0;
+    const steps = 2000, h = (x - 2) / steps;
+    let s = 0.5 * (1 / Math.log(2) + 1 / Math.log(x));
+    for (let i = 1; i < steps; i++) s += 1 / Math.log(2 + i * h);
+    return s * h;
+  }
+
+  renderVals() {
+    const r = (n) => Math.round(n * 10) / 10;
+    const P = (pts) => 'M' + pts.map((p) => r(p[0]) + ',' + r(p[1])).join(' ');
+    const GAMMA = [14.134725, 21.02204, 25.010858, 30.424876, 32.935062, 37.586178,
+      40.918719, 43.327073, 48.005151, 49.773832, 52.970321, 56.446248, 59.347044,
+      60.831779, 65.112544, 67.079811, 69.546402, 72.067158, 75.704691, 77.14484,
+      79.337375, 82.910381, 84.735493, 87.425275, 88.809111, 92.491899, 94.651344,
+      95.870634, 98.831194, 101.317851, 103.725538, 105.446623, 107.168611,
+      111.029536, 111.874659, 114.320221, 116.22668, 118.790783, 121.370125,
+      122.946829, 124.256819, 127.516684, 129.578704, 131.087689, 133.497737,
+      134.75651, 138.116042, 139.736209, 141.123707, 143.111846];
+
+    // ---- FIG 01: pi(x), Li(x), x/ln x on [0,100] ----
+    const X1 = (x) => 56 + (x / 100) * 964, Y1 = (y) => 290 - (y / 32) * 264;
+    const p100 = this.sieve(100);
+    let stair = [[X1(0), Y1(0)]], k = 0;
+    for (const p of p100) { stair.push([X1(p), Y1(k)]); k++; stair.push([X1(p), Y1(k)]); }
+    stair.push([X1(100), Y1(k)]);
+    const liPts = [], xlPts = [];
+    for (let x = 2; x <= 100; x += 1) {
+      liPts.push([X1(x), Y1(this.li(x))]);
+      xlPts.push([X1(x), Y1(x / Math.log(x))]);
+    }
+
+    // ---- FIG 02: Li(x) - pi(x) on [2,1000] with sqrt envelope ----
+    const X2 = (x) => 56 + (x / 10000) * 964, Y2 = (y) => 140 - (y / 110) * 84;
+    const pBig = this.sieve(10000);
+    let idx = 0;
+    const err = [], up = [], lo = [];
+    for (let x = 10; x <= 10000; x += 25) {
+      while (idx < pBig.length && pBig[idx] <= x) idx++;
+      err.push([X2(x), Y2(this.li(x) - idx)]);
+      up.push([X2(x), Y2(Math.sqrt(x))]);
+      lo.push([X2(x), Y2(-Math.sqrt(x))]);
+    }
+
+    // ---- FIG 03: zeros in the critical strip ----
+    const zeros = GAMMA.map((g) => ({ cx: r(56 + (g / 146) * 964) }));
+
+    // ---- FIG 04: psi(x) rebuilt from zeros ----
+    const n = this.state.count === null ? (this.props.zeroCount ?? 20) : this.state.count;
+    const X4 = (x) => 56 + ((x - 2) / 28) * 964, Y4 = (y) => 280 - (y / 32) * 264;
+    const jumps = [];
+    for (const p of this.sieve(30)) {
+      for (let q = p; q <= 30; q *= p) jumps.push([q, Math.log(p)]);
+    }
+    jumps.sort((a, b) => a[0] - b[0]);
+    let acc = 0;
+    const psiT = [[X4(2), Y4(0)]];
+    for (const [q, w] of jumps) {
+      psiT.push([X4(q), Y4(acc)]); acc += w; psiT.push([X4(q), Y4(acc)]);
+    }
+    psiT.push([X4(30), Y4(acc)]);
+    const psiA = [];
+    for (let x = 2; x <= 30; x += 0.06) {
+      let v = x - Math.log(2 * Math.PI) - 0.5 * Math.log(1 - 1 / (x * x));
+      const lx = Math.log(x), sq = Math.sqrt(x);
+      for (let i = 0; i < n; i++) {
+        const g = GAMMA[i], th = g * lx;
+        v -= 2 * sq * (0.5 * Math.cos(th) + g * Math.sin(th)) / (0.25 + g * g);
+      }
+      psiA.push([X4(x), Y4(Math.max(-2, Math.min(33, v)))]);
+    }
+
+    return {
+      accent: this.props.accent ?? '#b14e49',
+      fig: {
+        piPath: P(stair), liPath: P(liPts), xlogPath: P(xlPts),
+        labPi: r(Y1(25) - 11), labLi: r(Y1(29.1) - 11), labXlog: r(Y1(21.7) + 20),
+        errPath: P(err), envUpper: P(up), envLower: P(lo),
+        envPath: P(up) + ' L' + lo.slice().reverse().map((p) => r(p[0]) + ',' + r(p[1])).join(' L') + ' Z',
+        zeros: zeros,
+        psiTrue: P(psiT), psiApprox: P(psiA), count: n,
+        onCount: (e) => this.setState({ count: +e.target.value }),
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

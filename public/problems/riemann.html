@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Riemann Hypothesis, drawn | MilleViz</title>
+<meta name="description" content="Primes thin out on schedule, and a single line in the complex plane may say exactly how. The Riemann Hypothesis explained with figures you can move.">
+<link rel="canonical" href="https://milleviz.xera.ac/problems/riemann.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Riemann Hypothesis, drawn">
+<meta property="og:description" content="Each zero is a wave. Add enough and the primes appear.">
+<meta property="og:url" content="https://milleviz.xera.ac/problems/riemann.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body style="--accent:#b14e49;--tint:#ffe8e5">
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      <span>All problems</span>
+    </a>
+    <span class="wordmark">MILLEVIZ</span>
+  </div>
+</header>
+
+<main>
+  <article>
+
+  <section class="wrap prose page-hero">
+    <div class="eyebrow eyebrow-row">
+      <span class="lead">02 &middot; The Riemann Hypothesis</span>
+      <span>An interactive essay</span>
+    </div>
+    <h1>Where do the primes keep <em>their rhythm?</em></h1>
+    <p class="lede">Count the primes up to a million and you get 78,498. Nobody can tell you why that number and not another. Something decides it, and the guess is that the decision is made somewhere else entirely.</p>
+    <p class="body-copy">Primes are the numbers with no factors but themselves and one. They arrive without warning: 2, 3, 5, 7, 11, then a gap, then two at once. Yet from far enough away the scatter has a shape, and the shape is startlingly regular. The Riemann Hypothesis is a claim about how regular.</p>
+    <div class="claim">
+      <span class="eyebrow">The claim</span>
+      <div>Every nontrivial zero of the Riemann zeta function has real part exactly one half. Stated in 1859. Checked for the first ten trillion zeros. Proved for none of them.</div>
+    </div>
+    <noscript><div class="note"><span class="eyebrow">Note</span>The four figures below are drawn by script from computed values. With scripting off the text still stands on its own, but the pictures will be blank.</div></noscript>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">01 &nbsp;|&nbsp; The count</p>
+    <h2>Primes thin out, on schedule.</h2>
+    <p class="body-copy">Write down how many primes there are below each number and you get a staircase. It never stops climbing, but the steps get further apart. Gauss noticed as a teenager that the height of the staircase is close to a smooth curve, and that curve involves nothing but a logarithm.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>Primes below x, counted and estimated</span><span class="n">Fig. 01</span></figcaption>
+      <svg id="fig-count" viewBox="0 0 1040 340" role="img" aria-label="The prime counting staircase below 100, with the logarithmic integral and x over log x drawn against it."></svg>
+      <p class="fig-note">The staircase is the true count. The dashed line is Gauss's first guess, x divided by its logarithm. The solid gray line is the better one, the logarithmic integral, and it hugs the staircase closely enough that the difference is the whole subject.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">02 &nbsp;|&nbsp; The error</p>
+    <h2>The good guess is always a little wrong.</h2>
+    <p class="body-copy">Subtract the staircase from the smooth curve and you are left with the error. It wanders. The question is not whether it is zero; it is how far it can stray. Riemann's claim, translated out of its own language, sets a ceiling: the error never grows faster than the square root of x, give or take a logarithm.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>Li(x) &minus; &pi;(x), against a &radic;x envelope</span><span class="n">Fig. 02</span></figcaption>
+      <svg id="fig-error" viewBox="0 0 1040 280" role="img" aria-label="The error between the logarithmic integral and the prime count, drawn inside an envelope that opens as the square root of x."></svg>
+      <p class="fig-note">The envelope opens as &radic;x. The error crawls along the floor of it and, over this whole range, never once dips below zero: Li(x) always overshoots. The first time it undershoots is somewhere past 10 to the power 316, a number nobody will ever reach by counting. The error has to stay inside the envelope forever, at every scale, for the hypothesis to hold. No computation can settle that; only a proof can.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">03 &nbsp;|&nbsp; The zeros</p>
+    <h2>Everything sits on one line.</h2>
+    <p class="body-copy">Riemann moved the question somewhere unexpected. He built a function of a complex number, the zeta function, and showed that the error in the prime count is controlled entirely by the places where that function equals zero. Those places live in a vertical strip. Every one found so far sits dead center, on the line where the real part is one half.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>The first 50 nontrivial zeros in the critical strip</span><span class="n">Fig. 03</span></figcaption>
+      <svg id="fig-zeros" viewBox="0 0 1040 210" role="img" aria-label="Fifty zeros of the zeta function, every one of them on the line where the real part is one half."></svg>
+      <p class="fig-note">The first zero sits at t = 14.13. Point at any dot to read its height. The tick marks below record where the rest fall. More than ten trillion have been computed and not one has left the line. The hypothesis says none ever will.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">04 &nbsp;|&nbsp; The music</p>
+    <h2>Each zero is a wave. Add enough and the primes appear.</h2>
+    <p class="body-copy">This is the part that is hard to believe the first time. Every zero contributes one wave, and the sum of those waves reproduces the staircase of the primes exactly. Start with a straight line. Add the first zero and a ripple appears. Add fifty and the steps sharpen into place. The primes are not hiding a pattern; they are the pattern, heard from the other side.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>The prime staircase &psi;(x), rebuilt from zeros</span><span class="n">Fig. 04 &middot; Interactive</span></figcaption>
+      <svg id="fig-music" viewBox="0 0 1040 330" role="img" aria-label="Chebyshev's prime staircase, with the explicit formula drawn over it for a chosen number of zeta zeros."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Zeros included</span><span>50</span></div>
+          <input id="zeros" type="range" min="0" max="50" step="1" value="20" aria-label="Number of zeta zeros included in the sum">
+        </div>
+        <div class="readout"><div class="v" id="zeros-out">20</div><div class="k">Waves in the sum</div></div>
+      </div>
+      <p class="fig-note">Gray is the true staircase, which jumps by log p at every prime and every prime power. Colored is the explicit formula with the chosen number of zeros. This is Chebyshev's &psi;(x) rather than the prime count itself, because its formula is the clean one, and the formula converges to the middle of each riser rather than its top, which is why the curve threads through the steps instead of tracing them.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">05 &nbsp;|&nbsp; What hangs on it</p>
+    <h2>Thousands of theorems begin with the word if.</h2>
+    <p class="body-copy">Number theory is full of results whose first line assumes the Riemann Hypothesis. If a zero were ever found off the line, the waves would fall out of step and the primes would clump in a way nothing currently predicts. Much of what is believed about factorization, and so about the cryptography built on it, would need rewriting. Nobody expects that. Everybody would like to know.</p>
+    <p class="body-copy">It has stood since 1859. Hilbert put it on his list in 1900. Clay put a million dollars on it in 2000. It remains, by most accounts, the most important open question in mathematics.</p>
+  </section>
+
+  <section class="wrap prose disclosures">
+    <details class="disc">
+      <summary>Read the equation</summary>
+      <div class="disc-body">
+        <div class="eq">&zeta;(s) = &sum;<sub>n&nbsp;&ge;&nbsp;1</sub> 1 / n<sup>s</sup> = &prod;<sub>p&nbsp;prime</sub> (1 &minus; p<sup>&minus;s</sup>)<sup>&minus;1</sup></div>
+        <p>The sum on the left runs over every whole number; the product on the right runs over every prime. Euler proved they are the same thing, and that single identity is the bridge the whole subject crosses. The sum converges only when the real part of s exceeds one, so &zeta; is extended to the rest of the plane by analytic continuation. The zeros at s = &minus;2, &minus;4, &minus;6 and so on are called trivial and are not at issue. Every other zero is.</p>
+      </div>
+    </details>
+    <details class="disc">
+      <summary>Behind the visuals</summary>
+      <div class="disc-body">
+        <p>Figures 01 and 02 count primes by sieve and integrate Li(x) numerically from 2. Figure 03 plots the imaginary parts of the first fifty zeros at their published values, starting at 14.134725 and ending at 143.111846. Figure 04 evaluates the explicit formula &psi;(x) = x &minus; &sum; x<sup>&rho;</sup>/&rho; &minus; ln 2&pi; &minus; &frac12;ln(1 &minus; x<sup>&minus;2</sup>), pairing each zero with its conjugate so the sum stays real. The staircase behind it jumps by ln p at every prime power.</p>
+      </div>
+    </details>
+  </section>
+
+  <nav class="wrap pager">
+    <a class="prev" href="p-vs-np.html" style="border-top-color:#4c6ebd"><div class="k">&larr; 01 Previous</div><div class="t">P versus NP</div></a>
+    <a class="next" href="navier-stokes.html" style="border-top-color:#007bb2"><div class="k">03 Next &rarr;</div><div class="t">Navier&ndash;Stokes Smoothness</div></a>
+  </nav>
+
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>MilleViz &middot; 02 of 07</span>
+    <span>Official statement at <a href="https://www.claymath.org/millennium-problems/riemann-hypothesis/" rel="noopener">claymath.org</a></span>
+  </div>
+</footer>
+
+<script type="module" src="../js/riemann.js"></script>
+</body>
+</html>

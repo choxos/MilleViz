@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+.gstack/
+
+# Claude Design editor bundle. Regenerated from the .dc.html sources in design/;
+# two megabytes of editor code that does not belong in version control.
+design/milleviz-explainers.html

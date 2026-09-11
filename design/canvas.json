@@ -1,0 +1,40 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1200,
+      "h": 2600,
+      "title": "Index"
+    },
+    {
+      "file": "Riemann.dc.html",
+      "x": 1420,
+      "y": 0,
+      "w": 1200,
+      "h": 5680,
+      "title": "Problem page (Riemann)",
+      "is_interactive": true
+    }
+  ],
+  "annotations": [
+    {
+      "id": "system",
+      "x": -420,
+      "y": 0,
+      "w": 320,
+      "text": "Design system\n\nPaper #fbfaf7, ink #241e1a. All seven accents are oklch(0.55 0.13 h), one hue each:\n01 P vs NP 265\n02 Riemann 25\n03 Navier-Stokes 235\n04 Poincare 195\n05 Yang-Mills 145\n06 BSD 65\n07 Hodge 320\n\nThe page itself is black on paper. Color belongs to the problem, not the chrome.\n\nType: Newsreader display, IBM Plex Sans body, IBM Plex Mono labels and readouts."
+    },
+    {
+      "id": "figures",
+      "x": -420,
+      "y": 460,
+      "w": 320,
+      "text": "The four figures on the Riemann page are computed, not drawn: primes by sieve, Li(x) by numeric integration, the first 25 zeta zeros at their published values, and the explicit formula for the psi staircase. The slider under figure 04 works."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}
