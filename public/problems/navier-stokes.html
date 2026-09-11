@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Navier&ndash;Stokes smoothness, drawn | MilleViz</title>
-<meta name="description" content="We have had the equations of fluid motion for two centuries and still cannot prove their solutions never blow up. Navier-Stokes explained with figures you can move.">
+<meta name="description" content="In September 2026 OpenAI claimed a forced solution of the Navier-Stokes equations that blows up in finite time, settling two of the four statements the Millennium problem asks for. Explained with figures you can move.">
 <link rel="canonical" href="https://milleviz.xera.ac/problems/navier-stokes.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Navier-Stokes smoothness, drawn">
-<meta property="og:description" content="Stir the tea. Does the mathematics survive?">
+<meta property="og:description" content="Stir the tea. Does the mathematics survive? As of September 2026, if you push hard enough, no.">
 <meta property="og:url" content="https://milleviz.xera.ac/problems/navier-stokes.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../styles.css">
@@ -31,14 +31,14 @@
   <section class="wrap prose page-hero">
     <div class="eyebrow eyebrow-row">
       <span class="lead">03 &middot; Navier&ndash;Stokes smoothness</span>
-      <span>An interactive essay</span>
+      <span>An interactive essay &middot; Claimed 2026</span>
     </div>
     <h1>Stir the tea. <em>Does the math survive?</em></h1>
-    <p class="lede">The equations that describe how fluid moves were written down in the 1820s. Every weather forecast, wing and pipeline is designed with them. Nobody has been able to prove that their solutions do not tear themselves apart.</p>
-    <p class="body-copy">Push a fluid and the motion spreads, tangles, and eventually fades. Friction always seems to win. But in three dimensions a spinning tube of fluid can be stretched, and stretching makes it spin faster. Run that feedback hard enough and the speed at some tiny point might climb without limit in a finite amount of time. That event is called a singularity, and the equations would stop meaning anything at the moment it happened.</p>
+    <p class="lede">The equations that describe how fluid moves were written down in the 1820s. Every weather forecast, wing and pipeline is designed with them. For a century nobody could prove that their solutions do not tear themselves apart. On 8 September 2026 that changed, for two of the four questions the prize actually asks.</p>
+    <p class="body-copy">Push a fluid and the motion spreads, tangles, and eventually fades. Friction always seems to win. But in three dimensions a spinning tube of fluid can be stretched, and stretching makes it spin faster. Run that feedback hard enough and the speed at some tiny point climbs without limit in a finite amount of time. That event is a singularity, and the equations stop meaning anything at the moment it happens. A preprint from OpenAI, dated that day, builds one.</p>
     <div class="claim">
-      <span class="eyebrow">The claim</span>
-      <div>Start a three-dimensional incompressible fluid with smooth initial motion and finite energy. Prove that a smooth solution exists for all time, or produce one that breaks down. Either answer wins the prize. After ninety years of work, neither has been given.</div>
+      <span class="eyebrow">What the paper claims</span>
+      <div>For every viscosity, a smooth flow that starts from rest, is pushed by a smooth force switched on and off in a bounded region, and whose speed becomes unbounded in finite time while its kinetic energy stays bounded. That is statement (C) of the official problem, and the periodic version is (D). Fefferman's statement asks for a proof of any one of its four statements, so on its face this is a solution. It is three days old, unrefereed, and it leaves the question the equations were written to answer untouched.</div>
     </div>
     <noscript><div class="note"><span class="eyebrow">Note</span>The figures below are drawn and driven by script. With scripting off the text still stands on its own, but the pictures will be blank.</div></noscript>
   </section>
@@ -69,40 +69,78 @@
   </section>
 
   <section class="wrap prose section-head">
-    <p class="eyebrow">02 &nbsp;|&nbsp; The fear</p>
-    <h2>Stretch a vortex and it spins faster.</h2>
-    <p class="body-copy">This is the whole mechanism, and it has no counterpart in two dimensions. Picture a tube of spinning fluid. Stretch it along its own axis and it has to get thinner, because the fluid cannot be compressed. A thinner tube with the same circulation spins faster, the way a skater speeds up by pulling her arms in.</p>
-    <p class="body-copy">Faster spin means the surrounding flow stretches the tube harder still. Friction pulls the other way, and in every fluid anyone has ever watched, friction wins. The prize problem asks whether it always must.</p>
+    <p class="eyebrow">02 &nbsp;|&nbsp; The mechanism</p>
+    <h2>A core that shrinks faster than it shortens.</h2>
+    <p class="body-copy">Stretching is the whole mechanism, and it has no counterpart in two dimensions. Picture a tube of spinning fluid. Stretch it along its own axis and it has to get thinner, because the fluid cannot be compressed. A thinner tube carrying the same circulation spins faster, the way a skater speeds up by pulling her arms in. Faster spin drives more stretching. Friction pulls the other way, and in every fluid anyone has ever watched, friction wins.</p>
+    <p class="body-copy">The construction in the paper arranges for it not to. Fluid spirals inward through the sides of a core and runs out through the ends. The core contracts, and the key choice is that its radius contracts faster than its height: writing &tau; for the time left before the singular moment, the radius goes like &tau;<sup>1/2</sup> and the height like &tau;<sup>1/2&minus;h</sup>, for a small fixed h below one hundredth. The core becomes an ever more slender column.</p>
+    <p class="body-copy">Those two rates are what make the whole thing work. Speed runs as &tau;<sup>&minus;1/2&minus;h</sup> and goes to infinity. Kinetic energy in the core runs as &tau;<sup>1/2&minus;3h</sup> and goes to zero. The flow gets arbitrarily fast in a region that is shrinking fast enough to carry almost no energy at all, which is how the construction reaches unbounded speed without ever violating the energy bound the problem insists on.</p>
   </section>
 
   <section class="wrap">
     <figure class="fig">
-      <figcaption class="fig-head"><span>A stretched vortex tube: thinner, and faster</span><span class="n">Fig. 02 &middot; Interactive</span></figcaption>
-      <svg id="fig-stretch" viewBox="0 0 1040 330" role="img" aria-label="A vortex tube stretching along its axis, its radius shrinking as the square root of the stretch and its spin rising in proportion."></svg>
+      <figcaption class="fig-head"><span>The collapsing core, at the paper's own rates</span><span class="n">Fig. 02 &middot; Interactive</span></figcaption>
+      <svg id="fig-collapse" viewBox="0 0 1040 380" role="img" aria-label="A vortex core contracting toward the singular time, with its speed rising and its kinetic energy falling on a logarithmic plot."></svg>
       <div class="controls">
         <div>
-          <div class="ctl-head"><span>Stretch along the axis</span><span>&times;12</span></div>
-          <input id="stretch" type="range" min="10" max="120" step="1" value="10" aria-label="Stretch factor along the vortex axis">
+          <div class="ctl-head"><span>Toward the singular time</span><span>&tau; &rarr; 0</span></div>
+          <input id="tau" type="range" min="0" max="600" step="1" value="0" aria-label="Time remaining before the singular time, as a power of ten">
         </div>
-        <div class="readout"><div class="v" id="spin">1.0&times;</div><div class="k">Spin rate</div></div>
-        <div class="readout"><div class="v" id="radius">100%</div><div class="k">Core radius</div></div>
+        <div class="readout"><div class="v" id="speed-out">1&times;</div><div class="k">Peak speed</div></div>
+        <div class="readout"><div class="v" id="energy-out">100%</div><div class="k">Core kinetic energy</div></div>
       </div>
-      <p class="fig-note">Circulation around the tube is conserved, so stretching it by a factor L multiplies the spin by L and shrinks the radius by the square root of L. That is exact, not a metaphor. What nobody can settle is whether friction always catches this before the spin runs away.</p>
+      <p class="fig-note">Speed and energy move in opposite directions, and both readouts are the paper's exact rates with h = 0.005. The drawing exaggerates one thing, as the paper's own schematic does: at these rates the radius really does shrink faster than the height, but only by a few percent over six decades, which no picture can show. Nothing else here is exaggerated. Drag the slider from one to a millionth of the time remaining: the core ends up moving about a thousand times faster while carrying about a thousandth of the energy.</p>
     </figure>
   </section>
 
   <section class="wrap prose section-head">
     <p class="eyebrow">03 &nbsp;|&nbsp; What is actually known</p>
     <h2>Solutions exist. They may not be unique, and they may not stay smooth.</h2>
-    <p class="body-copy">Jean Leray proved in 1934 that a weak solution always exists: an object that satisfies the equations in an averaged sense and never needs more energy than it started with. What he could not show is that it is the only one, or that it is smooth. Ninety years later that is still the state of play.</p>
+    <p class="body-copy">Jean Leray proved in 1934 that a weak solution always exists: an object that satisfies the equations in an averaged sense and never needs more energy than it started with. What he could not show is that it is the only one, or that it is smooth. For the unforced problem that is still the state of play, ninety years on.</p>
     <p class="body-copy">The sharpest partial result came in 1982, when Caffarelli, Kohn and Nirenberg showed that the set of points where a weak solution could possibly misbehave is very small: so small that it cannot even contain a curve in space and time. A singularity, if one exists, has almost nowhere to be. Turbulence, worth saying plainly, is not a singularity. Turbulent water is violent, tangled and perfectly smooth in the mathematical sense.</p>
   </section>
 
   <section class="wrap prose section-head">
-    <p class="eyebrow">04 &nbsp;|&nbsp; A result reported in 2026</p>
-    <h2>A blowup, with a hand on the scale.</h2>
-    <p class="body-copy">On 8 September 2026, OpenAI reported a construction of a flow that starts at rest and reaches unbounded speed in finite time, with total energy staying bounded throughout, for every positive viscosity. The construction carries an external force: something outside the fluid keeps pushing it in exactly the right way.</p>
-    <p class="body-copy">That distinction is the whole story. The Clay problem lists four alternatives, and a forced blowup addresses two of them. It does not show that an unforced fluid, left to itself with smooth initial motion, can break down, and that is the case the prize is written about. Treat it as a reported result, not a settled one: the proof is what would establish the claim, and it is still being read.</p>
+    <p class="eyebrow">04 &nbsp;|&nbsp; What was claimed in September 2026</p>
+    <h2>Two of the four statements, answered.</h2>
+    <p class="body-copy">Charles Fefferman wrote the official problem for the Clay Institute in 2000. Rather than demand one answer, it offers four statements and asks for a proof of any one of them, in his words to give reasonable leeway to solvers while retaining the heart of the problem. Two of the four say smooth solutions always exist, with no force applied. The other two say that with a force allowed, some flow breaks down.</p>
+    <p class="body-copy">The paper claims the last two. Its main theorem produces, for every viscosity, a velocity and pressure that start from rest, satisfy the equations exactly under a smooth force confined to a bounded region of space and time, keep bounded kinetic energy, and reach unbounded speed as time approaches one. A separate corollary packs the same construction into a periodic box.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>The four statements, and where each one stands</span><span class="n">Fig. 03</span></figcaption>
+      <ol class="alts">
+        <li>
+          <span class="alt-k">A</span>
+          <span class="alt-b"><b>Smooth solutions always exist on open space.</b> No force. Any smooth starting motion that decays at infinity.</span>
+          <span class="alt-s">Open</span>
+        </li>
+        <li>
+          <span class="alt-k">B</span>
+          <span class="alt-b"><b>Smooth solutions always exist in a periodic box.</b> No force.</span>
+          <span class="alt-s">Open</span>
+        </li>
+        <li class="hit">
+          <span class="alt-k">C</span>
+          <span class="alt-b"><b>Some flow on open space breaks down.</b> A force is allowed, so long as it is smooth and decays.</span>
+          <span class="alt-s">Claimed 2026</span>
+        </li>
+        <li class="hit">
+          <span class="alt-k">D</span>
+          <span class="alt-b"><b>Some flow in a periodic box breaks down.</b> A force is allowed.</span>
+          <span class="alt-s">Claimed 2026</span>
+        </li>
+      </ol>
+      <p class="fig-note">A proof of any single line wins the prize, by the problem statement's own wording. Two lines now have a claim against them.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">05 &nbsp;|&nbsp; What it does not settle</p>
+    <h2>The fluid still has a hand on its back.</h2>
+    <p class="body-copy">The force matters, even though the problem permits it. A flow that blows up because something outside keeps pushing it in precisely the right pattern is a different animal from a flow that blows up on its own. The question most people mean when they ask whether Navier&ndash;Stokes breaks down is the unforced one: take a smooth swirl of water, leave it completely alone, and does it stay smooth forever? That is statements (A) and (B), and they are exactly as open as they were on 7 September.</p>
+    <p class="body-copy">Two more things are worth keeping straight. This is a preprint, three days old at the time of writing, and a hundred and sixty pages of hard analysis takes a long while to check. And the Clay Institute does not award on a preprint: its rules require publication in a refereed journal of standing, followed by two years of general acceptance in the mathematical community. So the honest status is a claimed solution to the problem as posed, not a prize awarded and not the physical question answered.</p>
+    <p class="body-copy">What is not in doubt is the shape of the thing. If it holds, the leeway Fefferman built into the statement in 2000 turned out to be wider than he expected, and the part of the problem everyone actually cares about is the part that survives.</p>
   </section>
 
   <section class="wrap prose disclosures">
@@ -112,12 +150,14 @@
         <div class="eq">&part;<sub>t</sub>u + (u&nbsp;&middot;&nbsp;&nabla;)u = &minus;&nabla;p + &nu;&nabla;&sup2;u + f &nbsp;&nbsp;&nbsp;&nbsp; &nabla;&nbsp;&middot;&nbsp;u = 0</div>
         <p>Read left to right: the velocity at a fixed point changes because the fluid carries motion into it, because pressure pushes it, because friction smooths it, and because something outside pushes it. The second equation says the fluid is incompressible: squeeze a parcel one way and it has to expand another. The prize problem is the case f = 0 in three dimensions, with smooth initial velocity and finite energy.</p>
         <p>The flow in figure 01 is the exact solution u = sin&nbsp;x&nbsp;cos&nbsp;y&nbsp;e<sup>&minus;2&nu;t</sup>, v = &minus;cos&nbsp;x&nbsp;sin&nbsp;y&nbsp;e<sup>&minus;2&nu;t</sup>, with pressure p = &frac14;(cos&nbsp;2x + cos&nbsp;2y)e<sup>&minus;4&nu;t</sup>.</p>
+        <p>The 2026 construction sets &tau; = 1 &minus; t and fixes a small h with 0 &lt; h &lt; 1/100. Its core has radial scale &tau;<sup>1/2</sup> and axial scale &tau;<sup>1/2&minus;h</sup>, azimuthal and axial speeds of order &tau;<sup>&minus;1/2&minus;h</sup>, and core kinetic energy of order &tau;<sup>1/2&minus;3h</sup>. The angular Reynolds number grows as &tau;<sup>&minus;h</sup> while the radial one stays bounded, which is the sense in which viscosity keeps competing with the inflow and still loses.</p>
       </div>
     </details>
     <details class="disc">
       <summary>Behind the visuals</summary>
       <div class="disc-body">
-        <p>Figure 01 advances each tracer through that exact velocity field with a second-order Runge&ndash;Kutta step, on a periodic domain, and colors it by the speed it is actually moving at. The decay factor on the readout is e<sup>&minus;2&nu;t</sup>, the same one in the solution. Figure 02 is a schematic, and its numbers are the exact scaling for a stretched tube of conserved circulation: spin proportional to the stretch, radius proportional to one over its square root. It is not a numerical solution of anything.</p>
+        <p>Figure 01 advances each tracer through that exact velocity field with a second-order Runge&ndash;Kutta step, on a periodic domain, and colors it by the speed it is actually moving at. The decay factor on the readout is e<sup>&minus;2&nu;t</sup>, the same one in the solution.</p>
+        <p>Figure 02 is a schematic of the 2026 core, not a numerical solution of it. The speed and energy readouts and the two plotted curves use the paper's exact exponents with h = 0.005: speed &tau;<sup>&minus;0.505</sup>, energy &tau;<sup>0.485</sup>. The drawn proportions are exaggerated, because the true ratio of radius to height is &tau;<sup>0.005</sup>, which falls only from 1 to about 0.93 across the whole six decades the slider covers. The paper's own figure exaggerates the same ratio for the same reason and says so.</p>
       </div>
     </details>
   </section>

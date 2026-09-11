@@ -336,3 +336,26 @@ noscript .note { display: block; }
   color: var(--ink-2); word-break: break-all; border-top: 1px solid var(--rule); padding-top: 16px;
 }
 .coords b { color: var(--accent); font-weight: 500; }
+
+/* ---------- the four alternatives ---------- */
+
+.alts { list-style: none; margin: 0; padding: 0; }
+.alts li {
+  display: grid; grid-template-columns: 44px minmax(0, 1fr) 132px;
+  gap: clamp(14px, 3vw, 30px); align-items: baseline;
+  padding: 20px 0; border-top: 1px solid var(--rule);
+}
+.alts li:last-child { border-bottom: 1px solid var(--rule); }
+.alts .alt-k { font-family: var(--mono); font-size: 13px; color: var(--faint); }
+.alts .alt-b { font-size: 15.5px; line-height: 1.6; color: var(--muted); }
+.alts .alt-b b { font-weight: 400; color: var(--ink); }
+.alts .alt-s {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); text-align: right; white-space: nowrap;
+}
+.alts li.hit .alt-k, .alts li.hit .alt-s { color: var(--accent); }
+.alts li.hit .alt-b b { color: var(--accent); }
+@media (max-width: 620px) {
+  .alts li { grid-template-columns: 30px minmax(0, 1fr); }
+  .alts .alt-s { grid-column: 2; text-align: left; }
+}

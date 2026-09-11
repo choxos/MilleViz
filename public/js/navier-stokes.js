@@ -9,6 +9,8 @@
 import { path, scale, svg, slider, animate, fitCanvas, onResize, r1 } from './viz.js';
 
 const ACCENT = '#007bb2';
+const INK = '#241e1a';
+const MUTED = '#79736f';
 const FAINT = '#a7a4a0';
 const RULE = '#e2dfdb';
 const PAPER = '#fbfaf7';
@@ -111,63 +113,118 @@ function figFlow() {
   animate(canvas, draw);
 }
 
-/** Fig 02: a vortex tube stretched along its axis. */
-function figStretch() {
-  const node = document.getElementById('fig-stretch');
-  const spinOut = document.getElementById('spin');
-  const radiusOut = document.getElementById('radius');
+/**
+ * Fig 02: the collapsing core of the 2026 construction.
+ *
+ * Writing tau for the time left before the singular moment, the paper's core
+ * has radial scale tau^(1/2) and axial scale tau^(1/2 - h), speeds of order
+ * tau^(-1/2 - h) and core kinetic energy of order tau^(1/2 - 3h), for a fixed
+ * h below 1/100. The readouts and the plotted curves use those exponents with
+ * h = 0.005. The drawn proportions are exaggerated, as the paper's own
+ * schematic is, because the true radius-to-height ratio is tau^h and barely
+ * moves across the range a picture can hold.
+ */
+function figCollapse() {
+  const node = document.getElementById('fig-collapse');
+  const speedOut = document.getElementById('speed-out');
+  const energyOut = document.getElementById('energy-out');
 
-  const cx = 520, cy = 160;
-  const baseHalfLength = 90, baseRadius = 64;
+  const sup = (n) => String(n).replace(/\d/g, (d) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
 
-  svg('path', { d: `M120,${cy} H920`, stroke: FAINT, 'stroke-width': 1, 'stroke-dasharray': '4 4', opacity: 0.7 }, node);
-  // The outline the tube started at, kept for comparison.
+  const H = 0.005;
+  const SPEED_EXP = -(0.5 + H);   // tau^(-1/2 - h)
+  const ENERGY_EXP = 0.5 - 3 * H; // tau^(1/2 - 3h)
+  const H_DRAWN = 0.06;           // the exaggerated aspect exponent, disclosed on the page
+  const DECADES = 6;
+
+  // Left panel: the core itself.
+  const coreX = 250, coreY = 186;
+  const R0 = 78, HALF0 = 132;
+
+  svg('text', { x: 56, y: 32, class: 'serieslabel', fill: MUTED }, node)
+    .textContent = 'the core, proportions exaggerated';
+  svg('path', { d: `M${coreX},34 V338`, stroke: FAINT, 'stroke-width': 1, 'stroke-dasharray': '4 4', opacity: 0.6 }, node);
   svg('rect', {
-    x: cx - baseHalfLength, y: cy - baseRadius, width: baseHalfLength * 2, height: baseRadius * 2,
+    x: coreX - R0, y: coreY - HALF0, width: R0 * 2, height: HALF0 * 2,
     fill: 'none', stroke: RULE, 'stroke-width': 1, 'stroke-dasharray': '3 4',
   }, node);
-  svg('text', { x: cx - baseHalfLength, y: cy - baseRadius - 12, class: 'tick' }, node)
+  svg('text', { x: coreX - R0, y: coreY - HALF0 - 10, class: 'tick' }, node)
     .textContent = 'where it started';
 
-  const body = svg('path', { fill: ACCENT, 'fill-opacity': 0.1, stroke: ACCENT, 'stroke-width': 1.4 }, node);
-  const capL = svg('ellipse', { fill: 'none', stroke: ACCENT, 'stroke-width': 1.4 }, node);
-  const capR = svg('ellipse', { fill: PAPER, stroke: ACCENT, 'stroke-width': 1.4 }, node);
-  const bands = [0, 1, 2, 3, 4].map(() => svg('path', { fill: 'none', stroke: ACCENT, 'stroke-width': 1, opacity: 0.4 }, node));
-  const arrowL = svg('path', { stroke: FAINT, 'stroke-width': 1.4, fill: 'none', 'stroke-linecap': 'round' }, node);
-  const arrowR = svg('path', { stroke: FAINT, 'stroke-width': 1.4, fill: 'none', 'stroke-linecap': 'round' }, node);
+  const body = svg('path', { fill: ACCENT, 'fill-opacity': 0.12, stroke: ACCENT, 'stroke-width': 1.5 }, node);
+  const bands = [0, 1, 2].map(() => svg('ellipse', { fill: 'none', stroke: ACCENT, 'stroke-width': 1, opacity: 0.45 }, node));
 
-  slider('stretch', (raw) => {
-    const L = raw / 10;                    // stretch factor, 1 to 12
-    const half = Math.min(baseHalfLength * L, 380);
-    const radius = baseRadius / Math.sqrt(L);
-    const capWidth = Math.max(7, radius * 0.34);
+  // Right panel: speed and energy against the time remaining.
+  const x = scale(0, -DECADES, 600, 1000);
+  const y = scale(-3.2, 3.2, 330, 44);
+
+  for (const e of [-3, -2, -1, 0, 1, 2, 3]) {
+    const py = r1(y(e));
+    svg('path', { d: `M600,${py} H1000`, class: 'grid-line' }, node);
+    svg('text', { x: 590, y: py + 4, 'text-anchor': 'end', class: 'tick' }, node)
+      .textContent = e === 0 ? '1' : `10${e < 0 ? '⁻' : ''}${sup(Math.abs(e))}`;
+  }
+  for (const d of [0, 2, 4, 6]) {
+    svg('text', { x: r1(x(-d)), y: 352, 'text-anchor': 'middle', class: 'tick' }, node)
+      .textContent = d === 0 ? 'τ = 1' : `10⁻${sup(d)}`;
+  }
+  svg('text', { x: 600, y: 32, class: 'serieslabel', fill: MUTED }, node)
+    .textContent = 'time remaining before the singular moment';
+
+  const line = (exp, color, width) => {
+    const pts = [];
+    for (let d = 0; d <= DECADES; d += 0.05) pts.push([x(-d), y(-d * exp)]);
+    return svg('path', { d: path(pts), stroke: color, 'stroke-width': width, fill: 'none' }, node);
+  };
+  line(SPEED_EXP, ACCENT, 2);
+  line(ENERGY_EXP, INK, 1.5);
+  svg('text', { x: 1000, y: r1(y(DECADES * -SPEED_EXP)) - 12, 'text-anchor': 'end', class: 'serieslabel', fill: ACCENT }, node)
+    .textContent = 'speed';
+  svg('text', { x: 1000, y: r1(y(DECADES * -ENERGY_EXP)) + 20, 'text-anchor': 'end', class: 'serieslabel', fill: INK }, node)
+    .textContent = 'core energy';
+
+  const cursor = svg('path', { stroke: FAINT, 'stroke-width': 1, 'stroke-dasharray': '3 3', fill: 'none' }, node);
+  const dotSpeed = svg('circle', { r: 4.5, fill: ACCENT }, node);
+  const dotEnergy = svg('circle', { r: 4.5, fill: INK }, node);
+
+  slider('tau', (raw) => {
+    const decades = raw / 100;            // 0 to 6
+    const tau = Math.pow(10, -decades);
+
+    // Exact rates, for the readouts.
+    const speed = Math.pow(tau, SPEED_EXP);
+    const energy = Math.pow(tau, ENERGY_EXP);
+    speedOut.textContent = speed < 10 ? `${speed.toFixed(1)}×` : `${Math.round(speed).toLocaleString('en-US')}×`;
+    energyOut.textContent = energy >= 0.01
+      ? `${(energy * 100).toFixed(energy > 0.1 ? 0 : 1)}%`
+      : `${(energy * 100).toPrecision(2)}%`;
+
+    // Drawn shape: an overall contraction, with the radius pulled in faster.
+    const shrink = 1 - 0.76 * (decades / DECADES);
+    const aspect = Math.pow(tau, H_DRAWN);
+    const radius = Math.max(2.5, R0 * shrink * aspect);
+    const half = Math.max(8, HALF0 * shrink);
+    const cap = Math.max(2, radius * 0.32);
 
     body.setAttribute('d',
-      `M${r1(cx - half)},${r1(cy - radius)} H${r1(cx + half)} ` +
-      `A${r1(capWidth)},${r1(radius)} 0 0 1 ${r1(cx + half)},${r1(cy + radius)} ` +
-      `H${r1(cx - half)} A${r1(capWidth)},${r1(radius)} 0 0 1 ${r1(cx - half)},${r1(cy - radius)} Z`);
-    for (const [cap, x] of [[capL, cx - half], [capR, cx + half]]) {
-      cap.setAttribute('cx', r1(x));
-      cap.setAttribute('cy', cy);
-      cap.setAttribute('rx', r1(capWidth));
-      cap.setAttribute('ry', r1(radius));
-    }
+      `M${r1(coreX - radius)},${r1(coreY - half)} H${r1(coreX + radius)} ` +
+      `A${r1(cap)},${r1(half)} 0 0 1 ${r1(coreX + radius)},${r1(coreY + half)} ` +
+      `H${r1(coreX - radius)} A${r1(cap)},${r1(half)} 0 0 1 ${r1(coreX - radius)},${r1(coreY - half)} Z`);
     bands.forEach((band, i) => {
-      const x = cx - half + ((i + 1) / 6) * half * 2;
-      band.setAttribute('d',
-        `M${r1(x)},${r1(cy - radius)} A${r1(capWidth)},${r1(radius)} 0 0 0 ${r1(x)},${r1(cy + radius)}`);
+      band.setAttribute('cx', coreX);
+      band.setAttribute('cy', r1(coreY - half + ((i + 1) / 4) * half * 2));
+      band.setAttribute('rx', r1(radius));
+      band.setAttribute('ry', r1(Math.max(1.5, radius * 0.3)));
     });
 
-    // Circulation arrows on the near face, drawn once; the readout carries the rate.
-    const sweep = (x, dir) => `M${r1(x)},${r1(cy - radius * 0.62)} ` +
-      `A${r1(capWidth * 0.62)},${r1(radius * 0.62)} 0 0 ${dir} ${r1(x)},${r1(cy + radius * 0.62)}`;
-    arrowL.setAttribute('d', sweep(cx - half, 1));
-    arrowR.setAttribute('d', sweep(cx + half, 0));
-
-    spinOut.textContent = `${L.toFixed(1)}×`;
-    radiusOut.textContent = `${Math.round(100 / Math.sqrt(L))}%`;
+    const px = r1(x(-decades));
+    cursor.setAttribute('d', `M${px},44 V330`);
+    dotSpeed.setAttribute('cx', px);
+    dotSpeed.setAttribute('cy', r1(y(-decades * SPEED_EXP)));
+    dotEnergy.setAttribute('cx', px);
+    dotEnergy.setAttribute('cy', r1(y(-decades * ENERGY_EXP)));
   });
 }
 
 figFlow();
-figStretch();
+figCollapse();

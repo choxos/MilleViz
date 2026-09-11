@@ -12,7 +12,7 @@ decoration. They compute what they show, from the definitions, in the browser.
 |---|---|---|
 | 01 | P versus NP | Open |
 | 02 | The Riemann Hypothesis | Open |
-| 03 | Navier–Stokes smoothness | Open |
+| 03 | Navier–Stokes smoothness | Solution claimed 2026 |
 | 04 | The Poincaré Conjecture | Solved 2003 |
 | 05 | Yang–Mills and the mass gap | Open |
 | 06 | Birch and Swinnerton-Dyer | Open |
@@ -20,6 +20,10 @@ decoration. They compute what they show, from the definitions, in the browser.
 
 Official problem statements are at
 [claymath.org](https://www.claymath.org/millennium-problems/).
+
+The Navier–Stokes page covers the September 2026 preprint claiming statements (C)
+and (D) of the official problem. Claimed means claimed: it is unrefereed, and the
+Clay rules require publication plus two years of general acceptance.
 
 ## Running it
 
