@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://milleviz.xera.ac/</loc><priority>1.0</priority></url>
+  <url><loc>https://milleviz.xera.ac/problems/p-vs-np.html</loc><priority>0.8</priority></url>
+  <url><loc>https://milleviz.xera.ac/problems/riemann.html</loc><priority>0.8</priority></url>
+  <url><loc>https://milleviz.xera.ac/problems/navier-stokes.html</loc><priority>0.8</priority></url>
+  <url><loc>https://milleviz.xera.ac/problems/poincare.html</loc><priority>0.8</priority></url>
+  <url><loc>https://milleviz.xera.ac/problems/yang-mills.html</loc><priority>0.8</priority></url>
+  <url><loc>https://milleviz.xera.ac/problems/bsd.html</loc><priority>0.8</priority></url>
+  <url><loc>https://milleviz.xera.ac/problems/hodge.html</loc><priority>0.8</priority></url>
+</urlset>

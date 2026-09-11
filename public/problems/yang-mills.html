@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yang&ndash;Mills and the mass gap, drawn | MilleViz</title>
+<meta name="description" content="The theory behind the strong nuclear force predicts experiments to eleven decimal places and has never been shown to exist as mathematics. Explained with figures you can move.">
+<link rel="canonical" href="https://milleviz.xera.ac/problems/yang-mills.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yang-Mills and the mass gap, drawn">
+<meta property="og:description" content="The force works. The theory does not exist.">
+<meta property="og:url" content="https://milleviz.xera.ac/problems/yang-mills.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body style="--accent:#38853e;--tint:#e3f4e3">
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      <span>All problems</span>
+    </a>
+    <span class="wordmark">MILLEVIZ</span>
+  </div>
+</header>
+
+<main>
+  <article>
+
+  <section class="wrap prose page-hero">
+    <div class="eyebrow eyebrow-row">
+      <span class="lead">05 &middot; Yang&ndash;Mills and the mass gap</span>
+      <span>An interactive essay</span>
+    </div>
+    <h1>The force works. <em>The theory does not exist.</em></h1>
+    <p class="lede">Quantum chromodynamics is the theory of the force that holds the nucleus together. It has been tested against experiment for fifty years and it keeps winning. As a piece of mathematics, nobody has managed to show that it exists at all.</p>
+    <p class="body-copy">This is the strangest problem of the seven, because the thing being asked for is not a theorem about a known object. It is the object. Physicists compute with Yang&ndash;Mills theory daily using methods that work and are not known to be legitimate. The prize is for building the theory properly, and then proving one specific thing about it.</p>
+    <div class="claim">
+      <span class="eyebrow">The claim</span>
+      <div>Construct a quantum Yang&ndash;Mills theory on four-dimensional space and time for a simple gauge group, satisfying the standard axioms, and prove it has a mass gap: that the lightest thing it can make weighs strictly more than nothing.</div>
+    </div>
+    <noscript><div class="note"><span class="eyebrow">Note</span>The figures below are drawn and driven by script. With scripting off the text still stands on its own, but the pictures will be blank.</div></noscript>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">01 &nbsp;|&nbsp; The gap</p>
+    <h2>Light has no floor. The strong force does.</h2>
+    <p class="body-copy">Every theory has a spectrum: the list of energies its particles are allowed to have. Electromagnetism starts at zero, because the photon is massless and you can always make one with less energy than the last. There is no smallest excitation, so the spectrum runs continuously down to nothing.</p>
+    <p class="body-copy">The strong force is expected to be different. The lightest thing it can make is a glueball, and a glueball weighs about 1.7 times the mass of a proton. Below that there is nothing at all: a clear band of forbidden energies sitting above the vacuum. That empty band is the mass gap.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>The energy spectrum, with and without a gap</span><span class="n">Fig. 01 &middot; Interactive</span></figcaption>
+      <svg id="fig-spectrum" viewBox="0 0 1040 400" role="img" aria-label="A continuous spectrum running down to zero for electromagnetism, against a gapped spectrum with discrete glueball states for the strong force."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Theory</span><span>&nbsp;</span></div>
+          <div class="btnrow" id="theory">
+            <button type="button" data-value="qcd" aria-pressed="true">Strong force</button>
+            <button type="button" data-value="em" aria-pressed="false">Electromagnetism</button>
+          </div>
+        </div>
+        <div class="readout"><div class="v" id="gap-out">1.73</div><div class="k">Mass gap, GeV</div></div>
+      </div>
+      <p class="fig-note" id="spectrum-note">The levels drawn are glueball masses computed on a lattice, in giga electron volts. They are numerical results from simulations, not theorems, which is exactly the situation the prize is meant to fix.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">02 &nbsp;|&nbsp; Why you can feel it</p>
+    <h2>A gap is the reason the strong force stops at the nucleus.</h2>
+    <p class="body-copy">The gap is not an abstraction. It sets the range of the force. If the lightest carrier is massless, its influence falls off gently, as a power of the distance, and reaches forever: that is why you can see a star. If the lightest carrier has mass m, the influence falls off as e raised to minus m times the distance, which crashes to nothing almost immediately.</p>
+    <p class="body-copy">Drag the mass below and watch the reach collapse. At the glueball mass the force is spent well inside a single proton, which is why nobody noticed the strongest force in nature until the twentieth century.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>How far the influence reaches, by carrier mass</span><span class="n">Fig. 02 &middot; Interactive</span></figcaption>
+      <svg id="fig-reach" viewBox="0 0 1040 340" role="img" aria-label="A correlation falling off as a power law when the carrier is massless, and exponentially when it has mass."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Carrier mass</span><span>2.0 GeV</span></div>
+          <input id="mass" type="range" min="0" max="200" step="1" value="30" aria-label="Mass of the force carrier in hundredths of a giga electron volt">
+        </div>
+        <div class="readout"><div class="v" id="mass-out">0.30</div><div class="k">GeV</div></div>
+        <div class="readout"><div class="v" id="reach-out">&middot;</div><div class="k">Reach, femtometers</div></div>
+      </div>
+      <p class="fig-note">Reach is the distance at which the correlation has fallen to one percent of its value at a tenth of a femtometer. The gray curve is the massless case for comparison, and it never really stops. Set the mass to zero and the two curves meet.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">03 &nbsp;|&nbsp; What is actually being asked</p>
+    <h2>Build the theory. Then prove the floor is there.</h2>
+    <p class="body-copy">Yang and Mills wrote their equations in 1954, generalizing electromagnetism so that the force carriers themselves carry charge and therefore push on each other. That self-interaction is what makes the theory rich and what makes it hard. Classically the equations are fine. The problem is quantizing them.</p>
+    <p class="body-copy">Quantum field theory as physicists use it is a set of recipes: expand in a small parameter, discard infinities in a systematic way, compare with experiment. For the strong force the small parameter is not small at the energies that matter, so even the recipes stop applying and calculations are done by simulating the theory on a lattice of spacetime points. Nobody has shown that a limit exists as the lattice spacing goes to zero.</p>
+    <p class="body-copy">So the prize asks for two things at once. Construct a quantum field theory that satisfies the usual axioms, in four dimensions, for a nonabelian gauge group. Then prove that its spectrum has a gap above the vacuum. Either half would be a landmark.</p>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">04 &nbsp;|&nbsp; What is known</p>
+    <h2>It works in two dimensions. It works in three. Four is the physical one.</h2>
+    <p class="body-copy">Constructive quantum field theory succeeded in the 1970s at building rigorous interacting theories in two and three spacetime dimensions, which was a serious achievement and won its practitioners a great deal of respect. Four dimensions has resisted every attempt since. Worse, there are results suggesting that some four-dimensional theories are trivial in the limit, meaning the construction gives you a free theory and nothing else. Yang&ndash;Mills is believed to escape that, because it is asymptotically free, but believed is not proved.</p>
+    <p class="body-copy">Meanwhile the lattice simulations get better every year and agree with experiment. The gap is visible in the numbers to several digits. It is simply not visible in any proof.</p>
+  </section>
+
+  <section class="wrap prose disclosures">
+    <details class="disc">
+      <summary>Read the equation</summary>
+      <div class="disc-body">
+        <div class="eq">F<sub>&mu;&nu;</sub> = &part;<sub>&mu;</sub>A<sub>&nu;</sub> &minus; &part;<sub>&nu;</sub>A<sub>&mu;</sub> + g[A<sub>&mu;</sub>, A<sub>&nu;</sub>]</div>
+        <p>The field strength. In electromagnetism the bracket is absent and the equation is linear, which is why light passes through light. In Yang&ndash;Mills the potentials are matrices and the bracket is a commutator, so the field pushes on itself, and the equations are nonlinear from the start. Everything difficult about the theory descends from that one term. The mass gap is the statement that the lowest nonzero eigenvalue of the quantum Hamiltonian is bounded away from zero, uniformly, in the theory that a solution would have to build.</p>
+      </div>
+    </details>
+    <details class="disc">
+      <summary>Behind the visuals</summary>
+      <div class="disc-body">
+        <p>Figure 01 plots glueball masses from lattice computations, in giga electron volts: the lightest scalar at about 1.73, the tensor at about 2.40, and the states above them. They are drawn as published numbers rather than recomputed here. The continuous case is the massless spectrum, which has no lowest excitation at all.</p>
+        <p>Figure 02 plots the Yukawa form e<sup>&minus;mr</sup>/r against the massless Coulomb form 1/r on a logarithmic vertical axis, with r in femtometers and the mass converted through &#8463;c &asymp; 0.1973 GeV femtometer. The reach readout solves for the distance where the correlation has dropped to one percent of its value at r = 0.1 femtometer.</p>
+      </div>
+    </details>
+  </section>
+
+  <nav class="wrap pager">
+    <a class="prev" href="poincare.html" style="border-top-color:#008889"><div class="k">&larr; 04 Previous</div><div class="t">The Poincar&eacute; Conjecture</div></a>
+    <a class="next" href="bsd.html" style="border-top-color:#a45e00"><div class="k">06 Next &rarr;</div><div class="t">Birch and Swinnerton-Dyer</div></a>
+  </nav>
+
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>MilleViz &middot; 05 of 07</span>
+    <span>Official statement at <a href="https://www.claymath.org/millennium-problems/yang-mills-the-maths-gap/" rel="noopener">claymath.org</a></span>
+  </div>
+</footer>
+
+<script type="module" src="../js/yang-mills.js"></script>
+</body>
+</html>

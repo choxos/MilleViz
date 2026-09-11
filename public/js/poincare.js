@@ -243,6 +243,7 @@ function figCurveFlow() {
     if (!running) draw();
   });
 
+  draw(); // so the readout is filled before the loop starts, or if it never does
   animate(canvas, () => {
     if (running) for (let i = 0; i < 2; i++) step();
     draw();

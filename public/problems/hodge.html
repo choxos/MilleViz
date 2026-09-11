@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Hodge Conjecture, drawn | MilleViz</title>
+<meta name="description" content="Sort a shape's holes by a complex-number recipe and some of them land in a special slot. The Hodge conjecture says those come from equations. Explained with figures you can move.">
+<link rel="canonical" href="https://milleviz.xera.ac/problems/hodge.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Hodge Conjecture, drawn">
+<meta property="og:description" content="Which holes come from equations?">
+<meta property="og:url" content="https://milleviz.xera.ac/problems/hodge.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body style="--accent:#9256a0;--tint:#f7e9fa">
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      <span>All problems</span>
+    </a>
+    <span class="wordmark">MILLEVIZ</span>
+  </div>
+</header>
+
+<main>
+  <article>
+
+  <section class="wrap prose page-hero">
+    <div class="eyebrow eyebrow-row">
+      <span class="lead">07 &middot; The Hodge Conjecture</span>
+      <span>An interactive essay</span>
+    </div>
+    <h1>Which holes come <em>from equations?</em></h1>
+    <p class="lede">This is the hardest of the seven to draw, and it is worth saying so at the top. It is not about fluids or primes or computation. It is a claim that two completely different ways of describing a shape agree, and both of them take a while to set up.</p>
+    <p class="body-copy">Start with a shape cut out by polynomial equations in complex numbers. Inside it live smaller shapes, also cut out by equations: curves, surfaces, and so on. Each of those leaves a trace in the shape's list of holes. The question is whether you can look at the list of holes and say which entries came from a smaller shape, without ever finding the shape itself.</p>
+    <div class="claim">
+      <span class="eyebrow">The claim</span>
+      <div>On a smooth projective complex variety, every rational cohomology class of type (p, p) is a rational combination of the classes of algebraic subvarieties. Stated by W. V. D. Hodge in 1950. Proved for p = 1 in 1924, before it was asked. Open for every p above that.</div>
+    </div>
+    <noscript><div class="note"><span class="eyebrow">Note</span>The figures below are drawn and driven by script. With scripting off the text still stands on its own, but the pictures will be blank.</div></noscript>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">01 &nbsp;|&nbsp; Sorting the holes</p>
+    <h2>Holes can be sorted, and the sorting has a shape.</h2>
+    <p class="body-copy">Every shape has holes, and they come in dimensions: a loop you cannot shrink, a hollow you cannot fill, and so on upward. Counting them gives the Betti numbers, and that much works for any shape at all. What Hodge found is that on a shape defined by complex equations, each dimension of holes splits further, into pieces labeled by a pair of numbers p and q that record how the complex structure sees them.</p>
+    <p class="body-copy">Laid out, the split makes a diamond. Each row is one dimension of holes; the entries across the row are the pieces it splits into. The diamond is always symmetric both ways, and the column down the middle, where p equals q, is the one the conjecture is about.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>The Hodge diamond of four varieties</span><span class="n">Fig. 01 &middot; Interactive</span></figcaption>
+      <svg id="fig-diamond" viewBox="0 0 1040 440" role="img" aria-label="Hodge diamonds for the projective plane, a K3 surface, an abelian surface and the quintic threefold, with the diagonal where p equals q picked out."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Variety</span><span>&nbsp;</span></div>
+          <div class="btnrow" id="variety">
+            <button type="button" data-value="p2" aria-pressed="true">Projective plane</button>
+            <button type="button" data-value="k3" aria-pressed="false">K3 surface</button>
+            <button type="button" data-value="ab" aria-pressed="false">Abelian surface</button>
+            <button type="button" data-value="quintic" aria-pressed="false">Quintic threefold</button>
+          </div>
+        </div>
+        <div class="readout"><div class="v" id="pp-out">&middot;</div><div class="k">Classes on the p = q column</div></div>
+      </div>
+      <p class="fig-note" id="diamond-note">Each dot is a dimension, and the number beside it is how many independent holes of that kind the shape has. The colored column is where p equals q: the only place the conjecture has anything to say.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">02 &nbsp;|&nbsp; Which classes even qualify</p>
+    <h2>The sorting depends on the shape, and it moves.</h2>
+    <p class="body-copy">Here is the part that makes the problem alive rather than bookkeeping. The list of holes is rigid: it is made of whole numbers and it does not care how you bend the shape. The sorting into p and q is not rigid at all. It depends on the complex structure, and if you deform the shape continuously the sorting slides with it.</p>
+    <p class="body-copy">So picture the rational classes as a fixed grid of points, and the (p, p) slot as a subspace that turns as the shape deforms. Most of the time the turning subspace catches almost nothing. At special positions it lines up with the grid and catches a whole family at once. The classes it catches are called Hodge classes, and they are the only candidates. The conjecture says every candidate is real: every one of them is built out of actual subvarieties sitting inside the shape.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>Deform the shape and watch which classes qualify</span><span class="n">Fig. 02 &middot; Interactive</span></figcaption>
+      <svg id="fig-lattice" viewBox="0 0 1040 420" role="img" aria-label="A fixed grid of rational classes with a rotating subspace passing through it, lighting up the classes that fall inside."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Deform the complex structure</span><span>&nbsp;</span></div>
+          <input id="deform" type="range" min="0" max="200" step="1" value="37" aria-label="Position of the complex structure as it deforms">
+        </div>
+        <div class="readout"><div class="v" id="hodge-count">&middot;</div><div class="k">Hodge classes caught</div></div>
+      </div>
+      <p class="fig-note">This is a picture of the mechanism, not of any particular variety. Move slowly and the count sits at its minimum almost everywhere, then jumps at isolated positions where the subspace lines up with the grid. Those jumps are real: they are why the number of curves on a surface can leap as you deform it, and why no argument that works for a generic shape can settle the question for every shape.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">03 &nbsp;|&nbsp; What is proved</p>
+    <h2>The first case was settled before the question was asked.</h2>
+    <p class="body-copy">Solomon Lefschetz proved in 1924 that on any smooth projective variety, every rational class of type (1, 1) is a combination of classes of divisors, which is to say of subvarieties of one dimension less. That is the p = 1 case, and it is a theorem. Hodge's conjecture, made in 1950, is the statement that the same holds for every p.</p>
+    <p class="body-copy">Everything above p = 1 is open in general. There are partial results for abelian varieties and for certain families, and there is a long list of cases checked. There is also instructive evidence about what the statement cannot be strengthened to. Atiyah and Hirzebruch showed in 1962 that the version with whole-number coefficients instead of fractions is false. Claire Voisin showed in 2002 that the natural extension to compact Kähler manifolds, which are shapes with complex structure but not necessarily cut out by equations, is also false. The conjecture survives, but only in exactly the form Hodge stated it.</p>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">04 &nbsp;|&nbsp; Why it resists</p>
+    <h2>It asks you to build something out of nothing but a number.</h2>
+    <p class="body-copy">The difficulty is a difference in kind. The data you are handed is cohomological: an equivalence class, an average, a shadow. The thing you are asked to produce is geometric: an actual subvariety, cut out by actual equations, sitting inside the shape. There is no general machinery for turning the first into the second, and this is the only place in mathematics where such a machine is confidently expected to exist.</p>
+    <p class="body-copy">That is also why the conjecture matters beyond itself. It is the load-bearing case of a much larger programme relating topology, algebraic geometry and arithmetic, and a great deal of modern work is written assuming it. Grothendieck called the standard conjectures, of which this is a close relative, the most important open problems in algebraic geometry. They still are.</p>
+  </section>
+
+  <section class="wrap prose disclosures">
+    <details class="disc">
+      <summary>Read the statement</summary>
+      <div class="disc-body">
+        <div class="eq">H<sup>k</sup>(X, &#8450;) = &#8853;<sub>p+q=k</sub> H<sup>p,q</sup>(X) &nbsp;&nbsp;&nbsp; Hdg<sup>p</sup>(X) = H<sup>2p</sup>(X, &#8474;) &cap; H<sup>p,p</sup>(X)</div>
+        <p>The first line is the Hodge decomposition: on a smooth projective complex variety, the cohomology in each degree splits into pieces indexed by p and q, with H<sup>q,p</sup> the conjugate of H<sup>p,q</sup>. The second defines the Hodge classes in degree 2p: rational classes that happen to land in the (p, p) piece. The conjecture is that every element of Hdg<sup>p</sup>(X) is a rational linear combination of the fundamental classes of algebraic subvarieties of codimension p. For p = 1 this is the Lefschetz theorem on (1, 1) classes.</p>
+      </div>
+    </details>
+    <details class="disc">
+      <summary>Behind the visuals</summary>
+      <div class="disc-body">
+        <p>Figure 01 draws published Hodge numbers, not computed ones: the projective plane, a K3 surface with its 20 in the middle, an abelian surface whose numbers are the binomial coefficients of a four-dimensional torus, and the quintic threefold with the 101 that made it the first example in mirror symmetry.</p>
+        <p>Figure 02 is a schematic and says so on the page. The grid is a fixed rank two lattice standing in for the rational classes. The line through it is a one-dimensional subspace whose direction is set by the slider, standing in for the (p, p) part of the decomposition as the complex structure deforms. A lattice point counts as caught when it lies within a small tolerance of the subspace, which is how a rational direction produces a whole family at once and an irrational one produces only the origin. No variety is being computed; the picture shows why the count jumps, which is the feature that matters.</p>
+      </div>
+    </details>
+  </section>
+
+  <nav class="wrap pager">
+    <a class="prev" href="bsd.html" style="border-top-color:#a45e00"><div class="k">&larr; 06 Previous</div><div class="t">Birch and Swinnerton-Dyer</div></a>
+    <a class="next" href="../index.html" style="border-top-color:#e2dfdb"><div class="k">Back to the index &rarr;</div><div class="t">All seven problems</div></a>
+  </nav>
+
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>MilleViz &middot; 07 of 07</span>
+    <span>Official statement at <a href="https://www.claymath.org/millennium-problems/hodge-conjecture/" rel="noopener">claymath.org</a></span>
+  </div>
+</footer>
+
+<script type="module" src="../js/hodge.js"></script>
+</body>
+</html>

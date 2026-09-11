@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Birch and Swinnerton-Dyer, drawn | MilleViz</title>
+<meta name="description" content="Some cubic curves carry infinitely many rational points and some carry almost none. A function built from counting solutions seems to know which. Explained with figures you can move.">
+<link rel="canonical" href="https://milleviz.xera.ac/problems/bsd.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Birch and Swinnerton-Dyer, drawn">
+<meta property="og:description" content="Add two points on a curve. Keep going.">
+<meta property="og:url" content="https://milleviz.xera.ac/problems/bsd.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body style="--accent:#a45e00;--tint:#fcebdb">
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      <span>All problems</span>
+    </a>
+    <span class="wordmark">MILLEVIZ</span>
+  </div>
+</header>
+
+<main>
+  <article>
+
+  <section class="wrap prose page-hero">
+    <div class="eyebrow eyebrow-row">
+      <span class="lead">06 &middot; Birch and Swinnerton-Dyer</span>
+      <span>An interactive essay</span>
+    </div>
+    <h1>Add two points on a curve. <em>Keep going.</em></h1>
+    <p class="lede">On some cubic curves the fraction solutions run out almost immediately. On others they never stop, and the numbers involved get astronomically large astonishingly fast. There is no known way to tell which kind you have by looking at the equation.</p>
+    <p class="body-copy">In the early 1960s Bryan Birch and Peter Swinnerton-Dyer ran an experiment on the EDSAC computer in Cambridge. They could not answer the question directly, so they counted solutions modulo every small prime instead and looked at how the counts behaved in bulk. What came out of that was a pattern nobody expected, and nobody has explained since.</p>
+    <div class="claim">
+      <span class="eyebrow">The claim</span>
+      <div>The number of independent infinite families of rational points on an elliptic curve, called its rank, equals the order to which a certain analytic function built from counting points modulo primes vanishes at the point s = 1. Two quantities from opposite ends of mathematics, conjectured equal on the strength of a computer run, still unproved after sixty years.</div>
+    </div>
+    <noscript><div class="note"><span class="eyebrow">Note</span>The figures below are drawn and driven by script. With scripting off the text still stands on its own, but the pictures will be blank.</div></noscript>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">01 &nbsp;|&nbsp; The group law</p>
+    <h2>Two points on the curve make a third.</h2>
+    <p class="body-copy">Take a cubic curve and two points on it with fraction coordinates. Draw the line through them. A line meets a cubic in three places, so there is a third intersection, and its coordinates are fractions too because they come out of solving a quadratic whose other roots you already know. Reflect it across the horizontal axis and you have defined addition on the curve.</p>
+    <p class="body-copy">Adding a point to itself means taking the tangent. Do that repeatedly from a single starting point and, on some curves, you never return and never repeat. Below is y&sup2; = x&sup3; &minus; 2, starting from the one small solution anybody can find: x = 3, y = 5. Slide along and watch the fractions.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>Multiples of a single point on y&sup2; = x&sup3; &minus; 2</span><span class="n">Fig. 01 &middot; Interactive</span></figcaption>
+      <svg id="fig-curve" viewBox="0 0 1040 420" role="img" aria-label="An elliptic curve with successive multiples of a generating point marked, joined by the chords that produce them."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Multiples taken</span><span>9</span></div>
+          <input id="multiple" type="range" min="1" max="9" step="1" value="3" aria-label="How many multiples of the generating point to take">
+        </div>
+        <div class="readout"><div class="v" id="mult-out">3P</div><div class="k">Point</div></div>
+        <div class="readout"><div class="v" id="digits-out">&middot;</div><div class="k">Digits in the numerator</div></div>
+      </div>
+      <div class="coords" id="coords">&nbsp;</div>
+      <p class="fig-note">Every one of these is an exact rational solution of the equation, computed here with unbounded integers, not floating point. The height roughly doubles at each step, so the digit count grows like the square of the multiple. This curve has rank one: every rational point on it is a multiple of this one.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">02 &nbsp;|&nbsp; Rank</p>
+    <h2>How many independent starting points does a curve need?</h2>
+    <p class="body-copy">Louis Mordell proved in 1922 that the rational points on an elliptic curve are always generated by a finite list. Some of that list is repetitive: points that eventually cycle back to where they started, of which there are never more than sixteen. The rest is the interesting part, and the number of independent non-repeating generators is the rank.</p>
+    <p class="body-copy">Rank zero means finitely many rational points in total. Rank one means one generator and an infinite chain like the one above. Higher ranks exist; the record known example has rank at least twenty-eight. And there is no algorithm, proved to terminate, that takes a curve and returns its rank. That is the practical problem the conjecture would solve.</p>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">03 &nbsp;|&nbsp; The experiment</p>
+    <h2>Count solutions modulo every prime and watch the product drift.</h2>
+    <p class="body-copy">Here is what Birch and Swinnerton-Dyer actually did. For each prime p, count the solutions of the curve modulo p. If the curve has many rational points, you would expect it to have slightly more solutions modulo p than average, for most p. One prime tells you nothing. Multiply the ratios together over all primes up to some bound and a signal appears out of the noise.</p>
+    <p class="body-copy">The figure plots that running product against the bound for two curves: one with no infinite family of rational points, one with a single infinite family. The curve with rational points to spare climbs and keeps climbing. The one without levels off. That separation, appearing out of raw counting, is what came off the EDSAC and is the reason anybody suspected the two sides of the conjecture were connected at all.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>The running product of N<sub>p</sub>/p, for a rank 0 and a rank 1 curve</span><span class="n">Fig. 02 &middot; Interactive</span></figcaption>
+      <svg id="fig-product" viewBox="0 0 1040 360" role="img" aria-label="Two running products of solution counts over primes, one flat and one climbing, on logarithmic axes."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Primes up to</span><span>20,000</span></div>
+          <input id="bound" type="range" min="100" max="20000" step="100" value="20000" aria-label="Upper bound on the primes included in the product">
+        </div>
+        <div class="readout"><div class="v" id="prod0">&middot;</div><div class="k">Rank 0 product</div></div>
+        <div class="readout"><div class="v" id="prod1">&middot;</div><div class="k">Rank 1 product</div></div>
+      </div>
+      <p class="fig-note">Be honest about what this shows. The conjectured statement is that the product grows like a power of the logarithm of the bound, with the rank as the exponent, and at twenty thousand primes that exponent is nowhere near settled: fit it here and you get about 0.3 for the rank one curve, not 1. The convergence is notoriously slow. What the picture does show, unmistakably, is that the two curves behave differently, and that the difference tracks something the equation alone does not reveal. Everything since has been an attempt to explain why.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">04 &nbsp;|&nbsp; What is known</p>
+    <h2>Proved for the two easiest ranks, and stuck above them.</h2>
+    <p class="body-copy">Benedict Gross and Don Zagier in 1986, together with Victor Kolyvagin shortly after, proved one direction of the conjecture in the first two cases: if the analytic function vanishes to order zero or one at s = 1, then the rank really is zero or one respectively. That covers a great many curves in practice and is the deepest thing known about the problem.</p>
+    <p class="body-copy">Rank two and above is completely open. So is the converse in general. There is also a second obstacle sitting behind the conjecture, an object called the Tate&ndash;Shafarevich group, which the full statement requires to be finite; that finiteness is itself unproved except in the cases above.</p>
+    <p class="body-copy">The practical stakes are real. Elliptic curves are the arithmetic underneath a large share of modern public key cryptography, and questions about how rational points are distributed feed directly into how those systems are understood.</p>
+  </section>
+
+  <section class="wrap prose disclosures">
+    <details class="disc">
+      <summary>Read the equation</summary>
+      <div class="disc-body">
+        <div class="eq">L(E, s) = &prod;<sub>p</sub> (1 &minus; a<sub>p</sub>p<sup>&minus;s</sup> + p<sup>1&minus;2s</sup>)<sup>&minus;1</sup> &nbsp;&nbsp;&nbsp; ord<sub>s=1</sub> L(E, s) =&#63; rank E(&#8474;)</div>
+        <p>The product runs over primes, with a<sub>p</sub> = p + 1 &minus; N<sub>p</sub> recording how far the solution count modulo p is from average. The product converges only for the real part of s above 3/2, and the function is continued to the whole plane; that continuation is itself a theorem, and a hard one, following from the modularity of elliptic curves proved by Wiles, Taylor and others in the course of settling Fermat's Last Theorem. The conjecture says the order of vanishing at s = 1 is the rank, and its refined form predicts the leading coefficient exactly, in terms of six arithmetic quantities of the curve.</p>
+      </div>
+    </details>
+    <details class="disc">
+      <summary>Behind the visuals</summary>
+      <div class="disc-body">
+        <p>Figure 01 computes multiples of P = (3, 5) on y&sup2; = x&sup3; &minus; 2 using the chord and tangent rules in exact rational arithmetic over big integers, so the coordinates shown are correct to the last digit however long they get. The plotted positions come from converting those exact values to floating point at the end, purely for drawing.</p>
+        <p>Figure 02 counts points on each curve modulo every prime up to twenty thousand by brute force, marking the quadratic residues once per prime and reading the solution count off them, then accumulating the product of N<sub>p</sub>/p with the primes of bad reduction skipped. The readouts are the running products themselves, not a fitted exponent, because at this bound a fitted exponent would flatter the picture. The two curves are y&sup2; = x&sup3; &minus; x, of rank 0, and y&sup2; = x&sup3; &minus; 2, of rank 1.</p>
+      </div>
+    </details>
+  </section>
+
+  <nav class="wrap pager">
+    <a class="prev" href="yang-mills.html" style="border-top-color:#38853e"><div class="k">&larr; 05 Previous</div><div class="t">Yang&ndash;Mills and the Mass Gap</div></a>
+    <a class="next" href="hodge.html" style="border-top-color:#9256a0"><div class="k">07 Next &rarr;</div><div class="t">The Hodge Conjecture</div></a>
+  </nav>
+
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>MilleViz &middot; 06 of 07</span>
+    <span>Official statement at <a href="https://www.claymath.org/millennium-problems/birch-and-swinnerton-dyer-conjecture/" rel="noopener">claymath.org</a></span>
+  </div>
+</footer>
+
+<script type="module" src="../js/bsd.js"></script>
+</body>
+</html>
