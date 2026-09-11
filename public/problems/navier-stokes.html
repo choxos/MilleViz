@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navier&ndash;Stokes smoothness, drawn | MilleViz</title>
+<meta name="description" content="We have had the equations of fluid motion for two centuries and still cannot prove their solutions never blow up. Navier-Stokes explained with figures you can move.">
+<link rel="canonical" href="https://milleviz.xera.ac/problems/navier-stokes.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Navier-Stokes smoothness, drawn">
+<meta property="og:description" content="Stir the tea. Does the mathematics survive?">
+<meta property="og:url" content="https://milleviz.xera.ac/problems/navier-stokes.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body style="--accent:#007bb2;--tint:#ddf2ff">
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      <span>All problems</span>
+    </a>
+    <span class="wordmark">MILLEVIZ</span>
+  </div>
+</header>
+
+<main>
+  <article>
+
+  <section class="wrap prose page-hero">
+    <div class="eyebrow eyebrow-row">
+      <span class="lead">03 &middot; Navier&ndash;Stokes smoothness</span>
+      <span>An interactive essay</span>
+    </div>
+    <h1>Stir the tea. <em>Does the math survive?</em></h1>
+    <p class="lede">The equations that describe how fluid moves were written down in the 1820s. Every weather forecast, wing and pipeline is designed with them. Nobody has been able to prove that their solutions do not tear themselves apart.</p>
+    <p class="body-copy">Push a fluid and the motion spreads, tangles, and eventually fades. Friction always seems to win. But in three dimensions a spinning tube of fluid can be stretched, and stretching makes it spin faster. Run that feedback hard enough and the speed at some tiny point might climb without limit in a finite amount of time. That event is called a singularity, and the equations would stop meaning anything at the moment it happened.</p>
+    <div class="claim">
+      <span class="eyebrow">The claim</span>
+      <div>Start a three-dimensional incompressible fluid with smooth initial motion and finite energy. Prove that a smooth solution exists for all time, or produce one that breaks down. Either answer wins the prize. After ninety years of work, neither has been given.</div>
+    </div>
+    <noscript><div class="note"><span class="eyebrow">Note</span>The figures below are drawn and driven by script. With scripting off the text still stands on its own, but the pictures will be blank.</div></noscript>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">01 &nbsp;|&nbsp; The flow</p>
+    <h2>Follow the water.</h2>
+    <p class="body-copy">Below is a real solution of the equations, not a drawing of one: the Taylor&ndash;Green vortex, one of the few flows that can be written down exactly. The dots are specks of dye going wherever the water goes. Their color is their speed. Nothing is driving the fluid, so friction slowly drains it, and how slowly is yours to set.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>The Taylor&ndash;Green vortex, viewed from above</span><span class="n">Fig. 01 &middot; Interactive</span></figcaption>
+      <canvas id="fig-flow" aria-label="Tracer particles circling in a grid of counter-rotating vortices, slowing as friction drains the motion."></canvas>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Internal friction</span><span>&nu;</span></div>
+          <input id="visc" type="range" min="5" max="200" step="1" value="35" aria-label="Viscosity">
+        </div>
+        <div>
+          <div class="ctl-head"><span>&nbsp;</span><span>&nbsp;</span></div>
+          <div class="btnrow"><button type="button" id="restir">Stir again</button></div>
+        </div>
+        <div class="readout"><div class="v" id="peak">100%</div><div class="k">Of the initial peak speed</div></div>
+      </div>
+      <p class="fig-note">This flow stays smooth forever, and that is provable, because it is two-dimensional. In two dimensions the question was settled decades ago: solutions exist for all time and never blow up. Every difficulty in the prize problem lives in the third dimension.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">02 &nbsp;|&nbsp; The fear</p>
+    <h2>Stretch a vortex and it spins faster.</h2>
+    <p class="body-copy">This is the whole mechanism, and it has no counterpart in two dimensions. Picture a tube of spinning fluid. Stretch it along its own axis and it has to get thinner, because the fluid cannot be compressed. A thinner tube with the same circulation spins faster, the way a skater speeds up by pulling her arms in.</p>
+    <p class="body-copy">Faster spin means the surrounding flow stretches the tube harder still. Friction pulls the other way, and in every fluid anyone has ever watched, friction wins. The prize problem asks whether it always must.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>A stretched vortex tube: thinner, and faster</span><span class="n">Fig. 02 &middot; Interactive</span></figcaption>
+      <svg id="fig-stretch" viewBox="0 0 1040 330" role="img" aria-label="A vortex tube stretching along its axis, its radius shrinking as the square root of the stretch and its spin rising in proportion."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Stretch along the axis</span><span>&times;12</span></div>
+          <input id="stretch" type="range" min="10" max="120" step="1" value="10" aria-label="Stretch factor along the vortex axis">
+        </div>
+        <div class="readout"><div class="v" id="spin">1.0&times;</div><div class="k">Spin rate</div></div>
+        <div class="readout"><div class="v" id="radius">100%</div><div class="k">Core radius</div></div>
+      </div>
+      <p class="fig-note">Circulation around the tube is conserved, so stretching it by a factor L multiplies the spin by L and shrinks the radius by the square root of L. That is exact, not a metaphor. What nobody can settle is whether friction always catches this before the spin runs away.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">03 &nbsp;|&nbsp; What is actually known</p>
+    <h2>Solutions exist. They may not be unique, and they may not stay smooth.</h2>
+    <p class="body-copy">Jean Leray proved in 1934 that a weak solution always exists: an object that satisfies the equations in an averaged sense and never needs more energy than it started with. What he could not show is that it is the only one, or that it is smooth. Ninety years later that is still the state of play.</p>
+    <p class="body-copy">The sharpest partial result came in 1982, when Caffarelli, Kohn and Nirenberg showed that the set of points where a weak solution could possibly misbehave is very small: so small that it cannot even contain a curve in space and time. A singularity, if one exists, has almost nowhere to be. Turbulence, worth saying plainly, is not a singularity. Turbulent water is violent, tangled and perfectly smooth in the mathematical sense.</p>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">04 &nbsp;|&nbsp; A result reported in 2026</p>
+    <h2>A blowup, with a hand on the scale.</h2>
+    <p class="body-copy">On 8 September 2026, OpenAI reported a construction of a flow that starts at rest and reaches unbounded speed in finite time, with total energy staying bounded throughout, for every positive viscosity. The construction carries an external force: something outside the fluid keeps pushing it in exactly the right way.</p>
+    <p class="body-copy">That distinction is the whole story. The Clay problem lists four alternatives, and a forced blowup addresses two of them. It does not show that an unforced fluid, left to itself with smooth initial motion, can break down, and that is the case the prize is written about. Treat it as a reported result, not a settled one: the proof is what would establish the claim, and it is still being read.</p>
+  </section>
+
+  <section class="wrap prose disclosures">
+    <details class="disc">
+      <summary>Read the equation</summary>
+      <div class="disc-body">
+        <div class="eq">&part;<sub>t</sub>u + (u&nbsp;&middot;&nbsp;&nabla;)u = &minus;&nabla;p + &nu;&nabla;&sup2;u + f &nbsp;&nbsp;&nbsp;&nbsp; &nabla;&nbsp;&middot;&nbsp;u = 0</div>
+        <p>Read left to right: the velocity at a fixed point changes because the fluid carries motion into it, because pressure pushes it, because friction smooths it, and because something outside pushes it. The second equation says the fluid is incompressible: squeeze a parcel one way and it has to expand another. The prize problem is the case f = 0 in three dimensions, with smooth initial velocity and finite energy.</p>
+        <p>The flow in figure 01 is the exact solution u = sin&nbsp;x&nbsp;cos&nbsp;y&nbsp;e<sup>&minus;2&nu;t</sup>, v = &minus;cos&nbsp;x&nbsp;sin&nbsp;y&nbsp;e<sup>&minus;2&nu;t</sup>, with pressure p = &frac14;(cos&nbsp;2x + cos&nbsp;2y)e<sup>&minus;4&nu;t</sup>.</p>
+      </div>
+    </details>
+    <details class="disc">
+      <summary>Behind the visuals</summary>
+      <div class="disc-body">
+        <p>Figure 01 advances each tracer through that exact velocity field with a second-order Runge&ndash;Kutta step, on a periodic domain, and colors it by the speed it is actually moving at. The decay factor on the readout is e<sup>&minus;2&nu;t</sup>, the same one in the solution. Figure 02 is a schematic, and its numbers are the exact scaling for a stretched tube of conserved circulation: spin proportional to the stretch, radius proportional to one over its square root. It is not a numerical solution of anything.</p>
+      </div>
+    </details>
+  </section>
+
+  <nav class="wrap pager">
+    <a class="prev" href="riemann.html" style="border-top-color:#b14e49"><div class="k">&larr; 02 Previous</div><div class="t">The Riemann Hypothesis</div></a>
+    <a class="next" href="poincare.html" style="border-top-color:#008889"><div class="k">04 Next &rarr;</div><div class="t">The Poincar&eacute; Conjecture</div></a>
+  </nav>
+
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>MilleViz &middot; 03 of 07</span>
+    <span>Official statement at <a href="https://www.claymath.org/millennium-problems/navier-stokes-equation/" rel="noopener">claymath.org</a></span>
+  </div>
+</footer>
+
+<script type="module" src="../js/navier-stokes.js"></script>
+</body>
+</html>

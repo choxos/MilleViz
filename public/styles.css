@@ -300,3 +300,28 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .page-hero .body-copy { margin-top: 24px; }
 .disclosures { margin-top: clamp(60px, 9vw, 84px); }
 noscript .note { display: block; }
+
+/* ---------- stat lines and the subset-sum puzzle ---------- */
+
+.statline { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: clamp(18px, 4vw, 40px); margin: 26px 0 0 0; }
+.statline div { border-top: 1px solid var(--rule); padding-top: 12px; }
+.statline dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; color: var(--muted); text-transform: uppercase; }
+.statline dd { margin: 8px 0 0 0; font-family: var(--serif); font-size: clamp(20px, 2.6vw, 26px); line-height: 1.2; color: var(--ink); }
+.statline dd.hot { color: var(--accent); }
+
+.puzzle { margin-top: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button {
+  font-family: var(--mono); font-size: 14px; letter-spacing: .02em; text-transform: none;
+  padding: 12px 16px; min-width: 78px; justify-content: center;
+}
+.chips button[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.chips button.scan { border-color: var(--accent); color: var(--accent); }
+.puzzle-foot { display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 44px); align-items: flex-end; justify-content: space-between; margin-top: 26px; }
+.sumline { display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 44px); }
+.sumline div { display: flex; flex-direction: column; gap: 6px; }
+.sumline .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: .11em; color: var(--muted); text-transform: uppercase; }
+.sumline .v { font-family: var(--serif); font-size: clamp(26px, 4vw, 36px); line-height: 1; }
+.sumline .v.hit { color: var(--accent); }
+.verdict { margin-top: 22px; font-size: 15px; color: var(--muted); min-height: 1.6em; }
+.verdict.hit { color: var(--accent); }

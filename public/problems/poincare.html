@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Poincar&eacute; Conjecture, drawn | MilleViz</title>
+<meta name="description" content="The one Millennium problem that has been answered. Every loop on a sphere tightens to nothing; on a doughnut it catches. Explained with figures you can move.">
+<link rel="canonical" href="https://milleviz.xera.ac/problems/poincare.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Poincare Conjecture, drawn">
+<meta property="og:description" content="Every loop tightens. Except on a doughnut.">
+<meta property="og:url" content="https://milleviz.xera.ac/problems/poincare.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body style="--accent:#008889;--tint:#daf5f4">
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      <span>All problems</span>
+    </a>
+    <span class="wordmark">MILLEVIZ</span>
+  </div>
+</header>
+
+<main>
+  <article>
+
+  <section class="wrap prose page-hero">
+    <div class="eyebrow eyebrow-row">
+      <span class="lead">04 &middot; The Poincar&eacute; Conjecture</span>
+      <span>An interactive essay &middot; Solved</span>
+    </div>
+    <h1>Every loop tightens. <em>Except on a doughnut.</em></h1>
+    <p class="lede">This is the one that has been answered. Grigori Perelman posted the proof to a preprint server in three installments between 2002 and 2003, declined the Fields Medal, declined the million dollars, and stopped doing mathematics in public.</p>
+    <p class="body-copy">The question is about telling shapes apart without measuring anything. Stretch a shape, bend it, squash it, but never tear or glue it: what survives that treatment? Poincar&eacute; asked in 1904 whether one particular survivor, a loop that can always be pulled tight, is enough on its own to pin down the sphere.</p>
+    <div class="claim">
+      <span class="eyebrow">The claim, now a theorem</span>
+      <div>Every closed three-dimensional shape in which every loop can be pulled tight to a point is the three-dimensional sphere, bent out of shape. Asked 1904. Proved by Grigori Perelman in 2003. Confirmed by three independent teams over the following three years.</div>
+    </div>
+    <noscript><div class="note"><span class="eyebrow">Note</span>The figures below are drawn and driven by script. With scripting off the text still stands on its own, but the pictures will be blank.</div></noscript>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">01 &nbsp;|&nbsp; The test</p>
+    <h2>Pull the loop tight and see what stops you.</h2>
+    <p class="body-copy">Put a rubber band anywhere on a ball and slide it around while tightening. It always ends as a point, wherever you started. Put the same rubber band around the hole of a doughnut and tighten as hard as you like: it slides to the innermost ring and then it is stuck, because the hole is in the way. A shape where every loop tightens to nothing is called simply connected, and it is the only property Poincar&eacute; asked about.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>Tightening a loop on two surfaces</span><span class="n">Fig. 01 &middot; Interactive</span></figcaption>
+      <canvas id="fig-loop" aria-label="A loop tightening to a point on a sphere, and catching on the hole of a torus."></canvas>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Surface</span><span>&nbsp;</span></div>
+          <div class="btnrow" id="surface">
+            <button type="button" data-value="sphere" aria-pressed="true">Sphere</button>
+            <button type="button" data-value="torus" aria-pressed="false">Doughnut</button>
+          </div>
+        </div>
+        <div>
+          <div class="ctl-head"><span>Tighten the loop</span><span>&nbsp;</span></div>
+          <input id="tighten" type="range" min="0" max="100" step="1" value="0" aria-label="How far the loop has been tightened">
+        </div>
+        <div class="readout"><div class="v" id="loop-size">100%</div><div class="k">Loop length</div></div>
+      </div>
+      <p class="fig-note" id="loop-note">On the sphere the loop slides toward the pole and vanishes. Nothing is in its way.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">02 &nbsp;|&nbsp; The statement</p>
+    <h2>Easy in five dimensions. Easy in four. Brutal in three.</h2>
+    <p class="body-copy">Poincar&eacute; asked about three-dimensional shapes, meaning the surface itself is three-dimensional, the way the skin of a ball is two-dimensional. The same question makes sense in any dimension, and the answers arrived in a strange order. Stephen Smale settled dimension five and above in 1961. Michael Freedman settled dimension four in 1982. Both won Fields Medals for it.</p>
+    <p class="body-copy">Dimension three held out for another twenty years. High dimensions are in a sense roomier: there is space to push a tangle out of the way. Three dimensions is cramped enough to be hard and small enough that no general theory applied. It took a new method to break it, and the method turned out to be about geometry, not topology at all.</p>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">03 &nbsp;|&nbsp; The method</p>
+    <h2>Let the shape smooth itself out.</h2>
+    <p class="body-copy">Richard Hamilton's idea was to stop reasoning about the shape and start heating it. Ricci flow lets curvature spread the way temperature spreads through metal: the sharply curved parts relax, the flat parts fill in, and a lumpy shape gradually rounds off. If a simply connected shape always flows to a perfect round sphere, the conjecture follows.</p>
+    <p class="body-copy">The figure below is the two-dimensional version of exactly that, called curve shortening flow: every point on the closed curve moves inward in proportion to how sharply the curve bends there. Gage, Hamilton and Grayson proved that any simple closed curve treated this way becomes convex and then becomes a circle. Press play and watch it happen.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>Curve shortening flow, the two-dimensional rehearsal</span><span class="n">Fig. 02 &middot; Interactive</span></figcaption>
+      <canvas id="fig-flow2" aria-label="A lumpy closed curve smoothing itself into a circle under curve shortening flow."></canvas>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>&nbsp;</span><span>&nbsp;</span></div>
+          <div class="btnrow">
+            <button type="button" id="play">Pause</button>
+            <button type="button" id="newblob">New shape</button>
+          </div>
+        </div>
+        <div class="readout"><div class="v" id="roundness">&mdash;</div><div class="k">Roundness</div></div>
+      </div>
+      <p class="fig-note">Roundness is the ratio of the shape to a circle of the same perimeter: 100% is a perfect circle. The curve keeps its area fixed here so it does not simply shrink off the screen; the real flow contracts as it rounds.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">04 &nbsp;|&nbsp; What Hamilton could not do</p>
+    <h2>Sometimes the neck pinches.</h2>
+    <p class="body-copy">In three dimensions the flow does not always behave. A shape like a dumbbell develops a thin neck, and the neck pinches to nothing in finite time. The flow hits a singularity and the whole method stops. Hamilton knew this and could not get past it.</p>
+    <p class="body-copy">Perelman's contribution was to classify exactly what those pinches can look like, and then to cut them out, cap the openings, and restart the flow on the pieces. That is called surgery. The hard part was proving the surgeries do not go on forever, so that the process finishes and you can read the answer off the pieces you are left with. The proof came with no fanfare: three preprints, no journal submission, no press.</p>
+    <p class="body-copy">He was offered the Fields Medal in 2006 and refused it. He was offered the Clay prize in 2010 and refused that too, saying the contribution of Richard Hamilton was no less than his own. The million dollars was eventually used to endow a position in Paris for young mathematicians.</p>
+  </section>
+
+  <section class="wrap prose disclosures">
+    <details class="disc">
+      <summary>Read the equation</summary>
+      <div class="disc-body">
+        <div class="eq">&part;<sub>t</sub> g<sub>ij</sub> = &minus;2 R<sub>ij</sub></div>
+        <p>Ricci flow. The left side is the rate at which the shape's own notion of distance changes. The right side is its Ricci curvature, negated. Where the shape is curved sharply and positively it contracts; where it is curved negatively it expands. The equation has the same form as the heat equation, which is why curvature spreads out and smooths, and the two-dimensional version of the same idea is the curve shortening flow drawn in figure 02.</p>
+      </div>
+    </details>
+    <details class="disc">
+      <summary>Behind the visuals</summary>
+      <div class="disc-body">
+        <p>Figure 01 draws both surfaces parametrically and projects them with a fixed tilt. The loop on the sphere is a circle of latitude, and tightening moves it toward the pole, where its radius genuinely reaches zero. The loop on the doughnut runs the long way around the hole, and tightening slides it to the inner equator, where its radius is the outer radius minus the tube radius and can go no lower. The percentage readout is the honest ratio of the two circumferences.</p>
+        <p>Figure 02 is a real curve shortening flow. Each point of the closed polygon moves toward the average of its two neighbors, which is the discrete form of moving along the curvature vector, and the whole curve is rescaled each step to hold its area fixed so it stays on screen. Roundness is the isoperimetric ratio 4&pi;A / P&sup2;.</p>
+      </div>
+    </details>
+  </section>
+
+  <nav class="wrap pager">
+    <a class="prev" href="navier-stokes.html" style="border-top-color:#007bb2"><div class="k">&larr; 03 Previous</div><div class="t">Navier&ndash;Stokes Smoothness</div></a>
+    <a class="next" href="yang-mills.html" style="border-top-color:#38853e"><div class="k">05 Next &rarr;</div><div class="t">Yang&ndash;Mills and the Mass Gap</div></a>
+  </nav>
+
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>MilleViz &middot; 04 of 07</span>
+    <span>Official statement at <a href="https://www.claymath.org/millennium-problems/poincare-conjecture/" rel="noopener">claymath.org</a></span>
+  </div>
+</footer>
+
+<script type="module" src="../js/poincare.js"></script>
+</body>
+</html>

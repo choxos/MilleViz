@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P versus NP, drawn | MilleViz</title>
+<meta name="description" content="Finding an answer looks harder than checking one. Nobody has proved it is. P versus NP explained with figures you can move.">
+<link rel="canonical" href="https://milleviz.xera.ac/problems/p-vs-np.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P versus NP, drawn">
+<meta property="og:description" content="Finding is hard. Checking is easy. Nobody knows whether that gap is real.">
+<meta property="og:url" content="https://milleviz.xera.ac/problems/p-vs-np.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body style="--accent:#4c6ebd;--tint:#e5efff">
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      <span>All problems</span>
+    </a>
+    <span class="wordmark">MILLEVIZ</span>
+  </div>
+</header>
+
+<main>
+  <article>
+
+  <section class="wrap prose page-hero">
+    <div class="eyebrow eyebrow-row">
+      <span class="lead">01 &middot; P versus NP</span>
+      <span>An interactive essay</span>
+    </div>
+    <h1>Finding is hard. <em>Checking is easy.</em></h1>
+    <p class="lede">A jigsaw takes an afternoon to finish and a second to see that it is finished. A sudoku is work to solve and no work at all to mark. That gap between finding and checking feels obvious. Nobody has been able to prove it is real.</p>
+    <p class="body-copy">P is the set of questions a computer can answer quickly. NP is the set of questions where, if somebody hands you an answer, you can check it quickly. Every question you can answer quickly you can obviously also check quickly, so P sits inside NP. The question is whether it fills it.</p>
+    <div class="claim">
+      <span class="eyebrow">The claim</span>
+      <div>Either P equals NP, in which case every problem whose answers are easy to check is also easy to solve, or it does not. Almost everyone believes it does not. Nobody has shown it either way, and the problem is now older than most of the field built on top of it.</div>
+    </div>
+    <noscript><div class="note"><span class="eyebrow">Note</span>The figures below are drawn and driven by script. With scripting off the text still stands on its own, but the pictures will be blank.</div></noscript>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">01 &nbsp;|&nbsp; The gap</p>
+    <h2>One grows like a wall. The other barely grows at all.</h2>
+    <p class="body-copy">Take a problem with n parts. Checking a proposed answer usually means walking the parts once or twice, so the work grows like n, or n squared. Searching for the answer by trying everything means walking every combination, and there are two to the power n of those. Both curves start in the same place. Only one of them stays on the page.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>Work to check against work to search, by problem size</span><span class="n">Fig. 01 &middot; Interactive</span></figcaption>
+      <svg id="fig-growth" viewBox="0 0 1040 360" role="img" aria-label="Two curves on a logarithmic scale: checking grows as n squared, searching grows as two to the power n."></svg>
+      <div class="controls">
+        <div>
+          <div class="ctl-head"><span>Parts in the problem</span><span>60</span></div>
+          <input id="size" type="range" min="2" max="60" step="1" value="24" aria-label="Number of parts in the problem">
+        </div>
+        <div class="readout"><div class="v" id="size-out">24</div><div class="k">n</div></div>
+      </div>
+      <dl class="statline" id="growth-stats">
+        <div><dt>Checking one answer</dt><dd id="stat-check">&mdash;</dd></div>
+        <div><dt>Trying every answer</dt><dd id="stat-search">&mdash;</dd></div>
+        <div><dt>Searching at a billion a second</dt><dd id="stat-time">&mdash;</dd></div>
+      </dl>
+      <p class="fig-note">The scale is logarithmic: every gridline is a thousand times the one below it. Checking is the flat curve. Searching is the straight line, and a straight line on this scale is an explosion. Nothing about that picture is a proof, though. It shows that the obvious method is hopeless, not that no clever method exists.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">02 &nbsp;|&nbsp; A puzzle to feel it on</p>
+    <h2>Pick numbers that add to the target.</h2>
+    <p class="body-copy">Here are fourteen numbers and one target. Somewhere in them is a handful that adds up exactly. Finding it by hand is genuinely annoying. Checking a proposed handful takes thirteen additions, which is why this problem is in NP. Press the search button and watch how many of the sixteen thousand combinations the machine has to walk before it lands on one.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>Subset sum, fourteen numbers</span><span class="n">Fig. 02 &middot; Interactive</span></figcaption>
+      <div class="puzzle">
+        <div class="chips" id="chips" role="group" aria-label="Numbers to include in the sum"></div>
+        <div class="puzzle-foot">
+          <div class="sumline">
+            <div><span class="k">Your sum</span><span class="v" id="sum">0</span></div>
+            <div><span class="k">Target</span><span class="v" id="target">&mdash;</span></div>
+            <div><span class="k">Combinations tried</span><span class="v" id="tried">0</span></div>
+          </div>
+          <div class="btnrow">
+            <button type="button" id="search">Search every combination</button>
+            <button type="button" id="reset">Clear</button>
+          </div>
+        </div>
+        <p class="verdict" id="verdict">Click numbers to add them up.</p>
+      </div>
+      <p class="fig-note">Fourteen numbers means 16,384 possible selections. Twenty numbers would be a million, thirty would be a billion, and a hundred numbers would be more selections than there are atoms in the earth. Every one of those puzzles is checked with a single pass of additions.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">03 &nbsp;|&nbsp; All one problem</p>
+    <h2>They are all the same problem wearing different clothes.</h2>
+    <p class="body-copy">In 1971 Stephen Cook showed that one problem in NP, satisfiability, is at least as hard as every other problem in NP: any of them can be rewritten as a satisfiability question in a manageable amount of work. Richard Karp then showed twenty-one more problems have the same property. The list is now in the thousands, and it runs through scheduling, routing, protein folding and circuit design.</p>
+    <p class="body-copy">That is what makes the question worth a million dollars. These problems are not merely similar. They are welded together. A fast method for any single one of them is a fast method for all of them at once.</p>
+  </section>
+
+  <section class="wrap">
+    <figure class="fig">
+      <figcaption class="fig-head"><span>A few of the reductions, and what they mean</span><span class="n">Fig. 03</span></figcaption>
+      <svg id="fig-reduce" viewBox="0 0 1040 330" role="img" aria-label="Satisfiability reduces to 3-SAT, which reduces in turn to clique, vertex cover, subset sum, Hamiltonian cycle and graph coloring."></svg>
+      <p class="fig-note">An arrow means the problem at the tail can be rewritten as the problem at the head, quickly. Follow the arrows backwards and a fast method at any head becomes a fast method for everything behind it. This is why nobody attacks these problems one at a time.</p>
+    </figure>
+  </section>
+
+  <section class="wrap prose section-head">
+    <p class="eyebrow">04 &nbsp;|&nbsp; What hangs on it</p>
+    <h2>Two futures, and only one of them is comfortable.</h2>
+    <p class="body-copy">If P does not equal NP, which is what nearly everyone expects, the world stays roughly as it is. Hard problems stay hard, cryptography keeps working because factoring and its relatives stay out of reach, and the value of a good heuristic stays high.</p>
+    <p class="body-copy">If P equals NP, and the proof came with an actually fast method, almost everything changes at once. Public key cryptography collapses, because breaking a key is exactly a search whose answer is easy to check. So does the distinction between having a proof and finding one: mathematics itself would become, in a sense, a search problem with a fast solution. That second world is so strange that its strangeness is treated as evidence against it.</p>
+    <p class="body-copy">Neither has been proved. The known barriers are severe: three separate results show that the natural families of proof technique cannot settle the question, which means a proof will have to come from somewhere nobody has looked yet.</p>
+  </section>
+
+  <section class="wrap prose disclosures">
+    <details class="disc">
+      <summary>Read the definitions</summary>
+      <div class="disc-body">
+        <div class="eq">P &sube; NP &nbsp;&nbsp;&nbsp; P =&#63; NP</div>
+        <p><strong>P</strong> is the set of decision problems a deterministic machine settles in a number of steps bounded by a polynomial in the input length. <strong>NP</strong> is the set where a proposed answer, called a certificate, can be verified in polynomial time. <strong>NP-complete</strong> problems are the hardest in NP: everything in NP reduces to them in polynomial time, so one of them falling into P drags all of NP with it. Note what NP does not stand for: it is nondeterministic polynomial, not non-polynomial.</p>
+      </div>
+    </details>
+    <details class="disc">
+      <summary>Behind the visuals</summary>
+      <div class="disc-body">
+        <p>Figure 01 plots log base ten of n squared and of two to the n, so both fit on one axis; the readouts are exact integers up to 2 to the 53 and a decimal exponent above that. Figure 02 holds fourteen fixed numbers and a target that is the sum of a real subset of them. The search button walks the 16,384 selections in counting order and stops at the first that matches, so the count it reports is the honest number of combinations examined, not an estimate. Figure 03 is a drawing, not a computation: the arrows record reductions from Cook's 1971 theorem and Karp's 1972 list.</p>
+      </div>
+    </details>
+  </section>
+
+  <nav class="wrap pager">
+    <a class="prev" href="../index.html" style="border-top-color:#e2dfdb"><div class="k">&larr; Index</div><div class="t">All seven problems</div></a>
+    <a class="next" href="riemann.html" style="border-top-color:#b14e49"><div class="k">02 Next &rarr;</div><div class="t">The Riemann Hypothesis</div></a>
+  </nav>
+
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>MilleViz &middot; 01 of 07</span>
+    <span>Official statement at <a href="https://www.claymath.org/millennium-problems/p-vs-np-problem/" rel="noopener">claymath.org</a></span>
+  </div>
+</footer>
+
+<script type="module" src="../js/p-vs-np.js"></script>
+</body>
+</html>
